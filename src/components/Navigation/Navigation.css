@@ -1,0 +1,33 @@
+.nav {
+  margin-top: 25px;
+}
+
+.nav__content {
+  display: flex;
+}
+
+.nav__link {
+  box-sizing: border-box;
+  padding: 8px 20px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #fff;
+  border-radius: 3px;
+  margin-left: 10px;
+}
+
+.nav__link_type_signin {
+  color: #000;
+  background-color: #3ddc84;
+}
+
+@media screen and (max-width: 767px) {
+  .nav__link {
+    padding: 7px 12px;
+    font-size: 10px;
+    line-height: 1.6;
+    margin-left: 2px;
+  }
+}
