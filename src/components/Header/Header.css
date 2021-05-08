@@ -9,8 +9,6 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  box-sizing: border-box;
-  padding: 0 70px;
 }
 
 .header__logo {
