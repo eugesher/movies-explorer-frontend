@@ -14,15 +14,3 @@
 .header__logo {
   margin-top: 18px;
 }
-
-@media screen and (max-width: 1279px) {
-  .header__content {
-    padding: 0 30px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .header__content {
-    padding: 0 14px;
-  }
-}
