@@ -1,5 +1,5 @@
 import "./Promo.css";
-import landingLogo from "../../images/landing-logo.svg";
+import promoLogo from "../../images/landing-logo.svg";
 import { imgAltTexts } from "../../utils/constants";
 
 export default function Promo() {
@@ -7,7 +7,7 @@ export default function Promo() {
     <section className="promo">
       <div className="section-content promo__content">
         <div className="promo__column">
-          <h1 className="promo__title">Учебный проект студента факультета Веб-разработки.</h1>
+          <h1 className="promo__title">Учебный проект студента факультета Веб&#8209;разработки.</h1>
           <p className="promo__info">
             Листайте ниже, чтобы узнать больше про этот проект и его создателя.
           </p>
@@ -18,7 +18,7 @@ export default function Promo() {
           </a>
         </div>
         <div className="promo__column">
-          <img src={landingLogo} alt={imgAltTexts.promoLogo} />
+          <img src={promoLogo} alt={imgAltTexts.promoLogo} className="promo__logo" />
         </div>
       </div>
     </section>
