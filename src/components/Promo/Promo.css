@@ -56,10 +56,12 @@
 }
 
 @media screen and (max-width: 1279px) {
+  .promo {
+    padding-top: 140px;
+  }
   .promo__content {
     flex-direction: column-reverse;
     align-items: center;
-    padding-top: 140px;
   }
   .promo__column {
     align-items: center;
@@ -79,12 +81,12 @@
     margin-top: 20px;
   }
   .promo__link {
-    margin-top: 92px;
+    margin-top: 96px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .promo__content {
+  .promo {
     padding-top: 70px;
     padding-bottom: 30px;
   }
