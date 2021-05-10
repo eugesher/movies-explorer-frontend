@@ -16,7 +16,7 @@
   border-bottom: 1px solid #dadada;
   font-weight: 400;
   font-size: 22px;
-  line-height: 1.23;
+  line-height: 1.21;
   letter-spacing: -0.04em;
 }
 
@@ -31,7 +31,7 @@
   margin: 70px 0 0;
   font-weight: 400;
   font-size: 20px;
-  line-height: 1.2;
+  line-height: 1.21;
   letter-spacing: -0.04em;
 }
 
@@ -149,6 +149,6 @@
   .about-project__time-bar-caption {
     font-weight: 400;
     font-size: 11px;
-    line-height: 1.21;
+    line-height: 1.16;
   }
 }
