@@ -13,18 +13,18 @@
   width: 100%;
   margin: 0;
   padding-bottom: 23px;
-  font-size: 22px;
+  border-bottom: 1px solid #dadada;
   font-weight: 400;
+  font-size: 22px;
   line-height: 1.23;
   letter-spacing: -0.04em;
-  border-bottom: 1px solid #dadada;
 }
 
 .about-project__info-container {
-  width: 100%;
+  grid-column-gap: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 40px;
+  width: 100%;
 }
 
 .about-project__info-title {
@@ -43,11 +43,11 @@
 }
 
 .about-project__time-bar {
-  width: 100%;
-  margin-top: 110px;
+  grid-row-gap: 16px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-row-gap: 16px;
+  width: 100%;
+  margin-top: 110px;
 }
 
 .about-project__time-bar-spent {
@@ -59,8 +59,8 @@
 }
 
 .about-project__time-bar-spent_column_left {
-  color: #000;
   background: linear-gradient(to right, #3ddc84 40%, #303030 40%);
+  color: #000;
 }
 
 .about-project__time-bar-spent_column_right {
@@ -70,10 +70,10 @@
 .about-project__time-bar-caption {
   margin: 0;
   padding-left: 14px;
+  color: #8b8b8b;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.21;
-  color: #8b8b8b;
 }
 
 @media screen and (max-width: 1279px) {
@@ -89,8 +89,8 @@
     line-height: 1.5;
   }
   .about-project__time-bar {
-    margin-top: 91px;
     grid-template-columns: minmax(140px, 1fr) 4fr;
+    margin-top: 91px;
   }
   .about-project__time-bar-spent {
     padding-left: 0;
@@ -98,8 +98,8 @@
     text-align: center;
   }
   .about-project__time-bar-spent_column_left {
-    color: #000;
     background: #3ddc84;
+    color: #000;
   }
   .about-project__time-bar-spent_column_right {
     background: #303030;
@@ -121,9 +121,9 @@
     align-items: flex-start;
   }
   .about-project__title {
+    padding-bottom: 28px;
     font-size: 18px;
     line-height: 1.21;
-    padding-bottom: 28px;
   }
   .about-project__info-title {
     margin: 60px 0 0;
@@ -136,9 +136,9 @@
     line-height: 1.45;
   }
   .about-project__time-bar {
-    margin-top: 62px;
-    grid-template-columns: minmax(100px, 1fr) 4fr;
     grid-row-gap: 10px;
+    grid-template-columns: minmax(100px, 1fr) 4fr;
+    margin-top: 62px;
   }
   .about-project__time-bar-spent {
     padding: 11px 0;

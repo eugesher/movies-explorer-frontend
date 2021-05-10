@@ -8,14 +8,14 @@
 
 .nav__link {
   box-sizing: border-box;
+  margin-left: 10px;
   padding: 8px 20px;
-  text-decoration: none;
+  border-radius: 3px;
+  color: #fff;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  color: #fff;
-  border-radius: 3px;
-  margin-left: 10px;
+  text-decoration: none;
   transition: opacity 250ms ease-in-out;
 }
 
@@ -24,15 +24,15 @@
 }
 
 .nav__link_type_signin {
-  color: #000;
   background-color: #3ddc84;
+  color: #000;
 }
 
 @media screen and (max-width: 767px) {
   .nav__link {
+    margin-left: 2px;
     padding: 7px 12px;
     font-size: 10px;
     line-height: 1.6;
-    margin-left: 2px;
   }
 }

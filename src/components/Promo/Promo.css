@@ -1,7 +1,7 @@
 .promo {
-  background-color: #073042;
   padding-top: 75px;
   padding-bottom: 75px;
+  background-color: #073042;
 }
 
 .promo__content {
@@ -18,36 +18,36 @@
 }
 
 .promo__title {
+  -webkit-text-stroke: 1px #000;
   max-width: 640px;
   margin: 0;
-  font-size: 50px;
   font-weight: 400;
+  font-size: 50px;
   line-height: 1.16;
-  -webkit-text-stroke: 1px #000;
   text-shadow: 0 4px 4px #0000003f;
 }
 
 .promo__info {
   max-width: 310px;
   margin: 38px 0 0;
-  font-size: 13px;
   font-weight: 400;
+  font-size: 13px;
   line-height: 1.23;
-  opacity: 0.5;
   mix-blend-mode: normal;
+  opacity: 0.5;
 }
 
 .promo__link {
   box-sizing: border-box;
   margin-top: 147px;
   padding: 9px 20px;
-  text-decoration: none;
+  border: 1px solid #ffffff99;
+  border-radius: 3px;
+  color: #fff;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  color: #fff;
-  border: 1px solid #ffffff99;
-  border-radius: 3px;
+  text-decoration: none;
   transition: opacity 250ms ease-in-out;
 }
 
@@ -67,18 +67,18 @@
     align-items: center;
   }
   .promo__title {
+    -webkit-text-stroke: initial;
     max-width: 100%;
+    margin-top: 50px;
     font-size: 40px;
     line-height: 1.25;
     text-align: center;
-    -webkit-text-stroke: initial;
     text-shadow: initial;
-    margin-top: 50px;
   }
   .promo__info {
     max-width: 260px;
-    text-align: center;
     margin-top: 20px;
+    text-align: center;
   }
   .promo__link {
     margin-top: 96px;
@@ -91,10 +91,10 @@
     padding-bottom: 30px;
   }
   .promo__title {
+    margin-top: 45px;
     font-size: 30px;
     line-height: 1.27;
     letter-spacing: -0.04em;
-    margin-top: 45px;
   }
   .promo__info {
     margin-top: 25px;
