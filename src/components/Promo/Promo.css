@@ -1,6 +1,7 @@
 .promo {
   background-color: #073042;
-  width: 100%;
+  padding-top: 75px;
+  padding-bottom: 75px;
 }
 
 .promo__content {
@@ -8,8 +9,6 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  padding-top: 75px;
-  padding-bottom: 75px;
 }
 
 .promo__column {
