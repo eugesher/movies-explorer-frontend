@@ -6,4 +6,5 @@ export const linkContents = {
 export const imgAltTexts = {
   logo: "логотип приложения",
   promoLogo: "промо логотип",
+  myPhoto: "моё фото",
 };
