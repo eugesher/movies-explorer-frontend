@@ -71,3 +71,35 @@
   line-height: 1.21;
   letter-spacing: -0.04em;
 }
+
+@media screen and (max-width: 1279px) {
+  .techs {
+    padding: 90px 20px;
+  }
+  .techs__content {
+    padding: 0 30px;
+  }
+  .techs__info {
+    margin-top: 80px;
+    text-align: center;
+  }
+  .techs__info-caption {
+    margin-top: 22px;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+  }
+  .techs__tag-list {
+    margin-top: 83px;
+  }
+  .techs__tag-list-item {
+    width: 84px;
+    height: 57px;
+  }
+  .techs__tag {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+}
