@@ -7,7 +7,7 @@ export default function Navigation() {
     <nav className="nav">
       <Switch>
         <Route exact path="/">
-          <ul className="list-group nav__content">
+          <ul className="nav__content">
             <li>
               <Link to="/signup" className="nav__link">
                 {linkContents.singUp}
