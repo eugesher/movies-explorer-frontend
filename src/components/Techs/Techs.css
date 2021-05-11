@@ -102,4 +102,39 @@
 }
 
 @media screen and (max-width: 767px) {
+  .techs {
+    padding: 70px 4px;
+  }
+  .techs__content {
+    padding: 0 14px;
+  }
+  .techs__title {
+    padding-bottom: 28px;
+    border-bottom-color: #000;
+    font-size: 18px;
+    line-height: 1.21;
+  }
+  .techs__info {
+    width: 100%;
+    margin-top: 61px;
+    font-size: 30px;
+  }
+  .techs__info-caption {
+    width: 100%;
+    margin-top: 26px;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 1.45;
+    letter-spacing: -0.04em;
+    text-align: center;
+  }
+  .techs__tag-list {
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    margin-top: 52px;
+    gap: 10px;
+  }
+  .techs__tag-list-item {
+    margin: 0;
+  }
 }
