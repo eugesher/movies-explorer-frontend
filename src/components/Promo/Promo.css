@@ -4,10 +4,14 @@
 }
 
 .promo__content {
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 70px;
 }
 
 .promo__column {
@@ -61,6 +65,7 @@
   .promo__content {
     flex-direction: column-reverse;
     align-items: center;
+    padding: 0 30px;
   }
   .promo__column {
     align-items: center;
@@ -87,6 +92,9 @@
 @media screen and (max-width: 767px) {
   .promo {
     padding: 70px 0 30px;
+  }
+  .promo__content {
+    padding: 0 14px;
   }
   .promo__title {
     margin-top: 45px;

@@ -5,12 +5,28 @@
 }
 
 .header__content {
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 70px;
 }
 
 .header__logo {
   margin-top: 18px;
+}
+
+@media screen and (max-width: 1279px) {
+  .header__content {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header__content {
+    padding: 0 14px;
+  }
 }

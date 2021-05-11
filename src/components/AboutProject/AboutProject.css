@@ -1,12 +1,15 @@
 .about-project {
-  padding-top: 110px;
-  padding-bottom: 110px;
+  padding: 110px 0;
 }
 
 .about-project__content {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 70px;
 }
 
 .about-project__title {
@@ -80,6 +83,9 @@
   .about-project {
     padding: 90px 20px;
   }
+  .about-project__content {
+    padding: 0 30px;
+  }
   .about-project__info-container {
     grid-column-gap: 32px;
   }
@@ -114,6 +120,9 @@
 @media screen and (max-width: 767px) {
   .about-project {
     padding: 72px 4px;
+  }
+  .about-project__content {
+    padding: 0 14px;
   }
   .about-project__info-container {
     display: flex;
