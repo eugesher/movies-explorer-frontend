@@ -15,7 +15,7 @@
 .about-project__title {
   width: 100%;
   margin: 0;
-  padding-bottom: 23px;
+  padding-bottom: 24px;
   border-bottom: 1px solid #dadada;
   font-weight: 400;
   font-size: 22px;
@@ -39,7 +39,7 @@
 }
 
 .about-project__info-text {
-  margin: 26px 0 0;
+  margin: 25px 0 0;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.43;
@@ -96,7 +96,7 @@
   }
   .about-project__time-bar {
     grid-template-columns: minmax(140px, 1fr) 4fr;
-    margin-top: 91px;
+    margin-top: 90px;
   }
   .about-project__time-bar-spent {
     padding-left: 0;
