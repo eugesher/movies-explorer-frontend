@@ -30,7 +30,7 @@
   text-shadow: 0 4px 4px #0000003f;
 }
 
-.promo__info {
+.promo__description {
   max-width: 310px;
   margin: 36px 0 0;
   font-weight: 400;
@@ -79,7 +79,7 @@
     text-align: center;
     text-shadow: initial;
   }
-  .promo__info {
+  .promo__description {
     max-width: 260px;
     margin-top: 22px;
     text-align: center;
@@ -102,7 +102,7 @@
     line-height: 38px;
     letter-spacing: -0.04em;
   }
-  .promo__info {
+  .promo__description {
     margin-top: 24px;
   }
   .promo__link {

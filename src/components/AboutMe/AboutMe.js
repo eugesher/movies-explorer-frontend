@@ -7,7 +7,7 @@ export default function AboutMe() {
     <section className="about-me">
       <div className="about-me__content">
         <h2 className="about-me__title">Студент</h2>
-        <div className="about-me__flex-container">
+        <div className="about-me__main-container">
           <div className="about-me__column-container">
             <div className="about-me__info">
               <p className="about-me__name">Виталий</p>
