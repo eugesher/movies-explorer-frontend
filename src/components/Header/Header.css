@@ -5,13 +5,13 @@
 }
 
 .header__content {
-  height: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   max-width: 1280px;
+  height: 100%;
   margin: 0 auto;
   padding: 0 70px;
 }
