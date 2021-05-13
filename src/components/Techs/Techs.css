@@ -44,9 +44,12 @@
 
 .techs__tag-list {
   display: flex;
+  flex-direction: row;
+  justify-content: start;
   margin: 100px 0 0;
   padding: 0;
   list-style-type: none;
+  gap: 10px;
 }
 
 .techs__tag-list-item {
@@ -55,13 +58,8 @@
   justify-content: center;
   width: 90px;
   height: 60px;
-  margin-left: 10px;
   border-radius: 10px;
   background-color: #303030;
-}
-
-.techs__tag-list-item:first-child {
-  margin-left: 0;
 }
 
 .techs__tag {
@@ -134,8 +132,5 @@
     grid-template-columns: repeat(2, min-content);
     margin-top: 50px;
     gap: 10px;
-  }
-  .techs__tag-list-item {
-    margin: 0;
   }
 }

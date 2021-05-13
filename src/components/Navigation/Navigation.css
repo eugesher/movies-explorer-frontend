@@ -5,12 +5,12 @@
   display: flex;
   margin: 0;
   padding: 0;
+  gap: 10px;
   list-style-type: none;
 }
 
 .nav__link {
   box-sizing: border-box;
-  margin-left: 10px;
   padding: 8px 20px;
   border-radius: 3px;
   color: #fff;
@@ -31,8 +31,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .nav__content {
+    gap: 2px;
+  }
   .nav__link {
-    margin-left: 2px;
     padding: 7px 12px;
     font-size: 10px;
     line-height: 16px;

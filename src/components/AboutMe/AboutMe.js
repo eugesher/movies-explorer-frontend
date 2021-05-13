@@ -20,7 +20,7 @@ export default function AboutMe() {
               </p>
             </div>
             <ul className="about-me__social-list">
-              <li className="about-me__social-list-item">
+              <li>
                 <a
                   href="https://www.linkedin.com/in/evgenii-chernyshov-3688201b6/"
                   target="_blank"
@@ -30,7 +30,7 @@ export default function AboutMe() {
                   Facebook
                 </a>
               </li>
-              <li className="about-me__social-list-item">
+              <li>
                 <a
                   href="https://github.com/eugesher"
                   target="_blank"

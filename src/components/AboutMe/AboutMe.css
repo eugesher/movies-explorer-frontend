@@ -80,14 +80,7 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
-}
-
-.about-me__social-list-item {
-  margin-left: 20px;
-}
-
-.about-me__social-list-item:first-child {
-  margin-left: 0;
+  gap: 20px;
 }
 
 .about-me__social-link {
@@ -177,8 +170,6 @@
   }
   .about-me__social-list {
     margin-top: 40px;
-  }
-  .about-me__social-list-item {
-    margin-left: 26px;
+    gap: 26px;
   }
 }
