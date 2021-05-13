@@ -15,11 +15,11 @@
 .about-project__title {
   width: 100%;
   margin: 0;
-  padding-bottom: 24px;
+  padding-bottom: 23px;
   border-bottom: 1px solid #dadada;
   font-weight: 400;
   font-size: 22px;
-  line-height: 1.21;
+  line-height: 27px;
   letter-spacing: -0.04em;
 }
 
@@ -34,19 +34,19 @@
   margin: 70px 0 0;
   font-weight: 400;
   font-size: 20px;
-  line-height: 1.21;
+  line-height: 24px;
   letter-spacing: -0.04em;
 }
 
 .about-project__info-text {
-  margin: 25px 0 0;
+  margin: 26px 0 0;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1.43;
+  line-height: 20px;
 }
 
 .about-project__time-bar {
-  grid-row-gap: 16px;
+  grid-row-gap: 14px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
@@ -55,10 +55,10 @@
 
 .about-project__time-bar-spent {
   margin: 0;
-  padding: 10px 0 10px 14px;
+  padding: 9px 0 9px 14px;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1.21;
+  line-height: 17px;
 }
 
 .about-project__time-bar-spent_column_left {
@@ -76,7 +76,7 @@
   color: #8b8b8b;
   font-weight: 500;
   font-size: 14px;
-  line-height: 1.21;
+  line-height: 17px;
 }
 
 @media screen and (max-width: 1279px) {
@@ -90,16 +90,16 @@
     grid-column-gap: 32px;
   }
   .about-project__info-text {
-    margin: 24px 0 0;
+    margin: 22px 0 0;
     font-size: 12px;
-    line-height: 1.5;
+    line-height: 18px;
   }
   .about-project__time-bar {
     grid-template-columns: minmax(140px, 1fr) 4fr;
-    margin-top: 90px;
+    margin-top: 93px;
   }
   .about-project__time-bar-spent {
-    padding-left: 0;
+    padding: 9px 0;
     font-weight: 400;
     text-align: center;
   }
@@ -132,31 +132,32 @@
   .about-project__title {
     padding-bottom: 28px;
     font-size: 18px;
-    line-height: 1.21;
+    line-height: 22px;
   }
   .about-project__info-title {
     margin: 60px 0 0;
     font-size: 18px;
-    line-height: 1.21;
+    line-height: 22px;
   }
   .about-project__info-text {
-    margin: 18px 0 0;
+    margin: 16px 0 0;
     font-size: 11px;
-    line-height: 1.45;
+    line-height: 16px;
   }
   .about-project__time-bar {
     grid-row-gap: 10px;
     grid-template-columns: minmax(100px, 1fr) 4fr;
-    margin-top: 62px;
+    margin-top: 60px;
   }
   .about-project__time-bar-spent {
+    padding: 11px 0;
     font-weight: 400;
     font-size: 11px;
-    line-height: 1.21;
+    line-height: 13px;
   }
   .about-project__time-bar-caption {
     font-weight: 400;
     font-size: 11px;
-    line-height: 1.16;
+    line-height: 13px;
   }
 }
