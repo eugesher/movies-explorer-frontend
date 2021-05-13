@@ -48,8 +48,8 @@
   justify-content: flex-start;
   margin: 100px 0 0;
   padding: 0;
-  list-style-type: none;
   gap: 10px;
+  list-style-type: none;
 }
 
 .techs__tag-list-item {
@@ -96,6 +96,7 @@
   }
   .techs__tag {
     font-size: 12px;
+    line-height: 15px;
   }
 }
 
@@ -117,6 +118,7 @@
     width: 100%;
     margin-top: 60px;
     font-size: 30px;
+    line-height: 36px;
   }
   .techs__info-description {
     width: 100%;
