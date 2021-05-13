@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header__content">
-        <img src={logo} alt={imgAltTexts.logo} className="header__logo" />
+        <img src={logo} alt={imgAltTexts.logo} />
         <Navigation />
       </div>
     </header>
