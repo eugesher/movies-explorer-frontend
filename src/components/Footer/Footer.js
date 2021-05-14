@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="footer__main-container">
           <p className="footer__copyright">&copy; 2020</p>
           <ul className="footer__social-list">
-            <li>
+            <li className="footer__social-list-item">
               <a
                 href="https://praktikum.yandex.ru/"
                 target="_blank"
@@ -18,7 +18,7 @@ export default function Footer() {
                 Яндекс.Практикум
               </a>
             </li>
-            <li>
+            <li className="footer__social-list-item">
               <a
                 href="https://github.com/eugesher"
                 target="_blank"
@@ -28,7 +28,7 @@ export default function Footer() {
                 GitHub
               </a>
             </li>
-            <li>
+            <li className="footer__social-list-item">
               <a
                 href="https://www.linkedin.com/in/evgenii-chernyshov-3688201b6/"
                 target="_blank"
