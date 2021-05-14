@@ -89,6 +89,11 @@
   font-size: 14px;
   line-height: 17px;
   text-decoration: none;
+  transition: opacity 250ms ease-in-out;
+}
+
+.about-me__social-link:hover {
+  opacity: 0.7;
 }
 
 .about-me__photo {
