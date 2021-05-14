@@ -130,13 +130,13 @@
     text-align: center;
   }
   .techs__tag-list {
-    box-sizing: border-box;
-    max-width: 100%;
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(auto-fit, 84px);
-    margin-top: 50px;
     grid-gap: 10px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 84px);
+    justify-content: center;
+    max-width: 100%;
+    margin-top: 50px;
     padding: 0 8px;
   }
 }
