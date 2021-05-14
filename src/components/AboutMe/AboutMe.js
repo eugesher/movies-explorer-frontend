@@ -1,6 +1,7 @@
 import "./AboutMe.css";
 import myPhoto from "../../images/vit.png";
 import { imgAltTexts } from "../../utils/constants";
+import Portfolio from "../Portfolio/Portfolio";
 
 export default function AboutMe() {
   return (
@@ -44,6 +45,7 @@ export default function AboutMe() {
           </div>
           <img src={myPhoto} alt={imgAltTexts.myPhoto} className="about-me__photo" />
         </div>
+        <Portfolio />
       </div>
     </section>
   );
