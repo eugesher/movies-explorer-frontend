@@ -1,5 +1,5 @@
 import "./AboutMe.css";
-import myPhoto from "../../images/vit.png";
+import myPhoto from "../../images/me.png";
 import { imgAltTexts } from "../../utils/constants";
 import Portfolio from "../Portfolio/Portfolio";
 
@@ -11,13 +11,14 @@ export default function AboutMe() {
         <div className="about-me__main-container">
           <div className="about-me__column-container">
             <div className="about-me__info">
-              <p className="about-me__name">Виталий</p>
-              <p className="about-me__job">Фронтенд-разработчик, 30 лет</p>
+              <p className="about-me__name">Евгений</p>
+              <p className="about-me__job">Фронтенд-разработчик, 31 год</p>
               <p className="about-me__summary">
-                Я родился и живу в Саратове, закончил факультет экономики СГУ. У меня есть жена и
-                дочь. Я люблю слушать музыку, а ещё увлекаюсь бегом. Недавно начал кодить. С 2015
-                года работал в компании «СКБ Контур». После того, как прошёл курс по
-                веб&#8209;разработке, начал заниматься фриланс-заказами и ушёл с постоянной работы.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad excepturi maiores nisi
+                reiciendis sint. Aliquam aperiam asperiores beatae consectetur dicta distinctio
+                dolor doloremque, ea excepturi expedita explicabo fuga fugit hic itaque laboriosam
+                maxime minima, molestiae molestias non omnis pariatur placeat qui ratione
+                reprehenderit vel vitae voluptatum. Iure perferendis ut voluptates!
               </p>
             </div>
             <ul className="about-me__social-list">
@@ -28,7 +29,7 @@ export default function AboutMe() {
                   rel="noreferrer"
                   className="about-me__social-link"
                 >
-                  Facebook
+                  LinkedIn
                 </a>
               </li>
               <li>

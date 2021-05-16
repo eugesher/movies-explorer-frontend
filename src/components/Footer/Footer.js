@@ -35,7 +35,7 @@ export default function Footer() {
                 rel="noreferrer"
                 className="footer__social-link"
               >
-                Facebook
+                LinkedIn
               </a>
             </li>
           </ul>
