@@ -11,9 +11,7 @@ export default function Promo() {
           <p className="promo__description">
             Листайте ниже, чтобы узнать больше про этот проект и его создателя.
           </p>
-          {/*todo*/}
-          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a href="#" className="promo__link">
+          <a href={"#about"} className="promo__link">
             Узнать больше
           </a>
         </div>
