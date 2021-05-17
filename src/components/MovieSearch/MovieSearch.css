@@ -58,4 +58,32 @@
   border-radius: 5px;
   background-color: #4285f4;
   color: inherit;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@media screen and (max-width: 1279px) {
+  .movie-search__content {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .movie-search__content {
+    padding: 0 14px;
+  }
+  .movie-search__input-group {
+    padding: 4px;
+    margin-bottom: 30px;
+  }
+  .movie-search__input {
+    padding: 6px;
+    font-size: 16px;
+    line-height: 16px;
+  }
+  .movie-search__submit-button {
+    width: 80px;
+    height: 44px;
+  }
 }
