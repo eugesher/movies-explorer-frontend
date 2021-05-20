@@ -10,8 +10,8 @@ export default function MoviesCardList() {
         <MoviesCard />
         <MoviesCard />
         <MoviesCard />
-        <MoviesCard />
-        <MoviesCard />
+        {/*<MoviesCard />*/}
+        {/*<MoviesCard />*/}
       </div>
       <div className="movies-card-list__more-button-container">
         <button type="button" className="movies-card-list__more-button">

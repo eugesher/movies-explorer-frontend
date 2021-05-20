@@ -53,4 +53,10 @@
     padding: 0 10px;
     gap: 20px;
   }
+  .movies-card-list__more-button-container {
+    padding-top: 70px;
+  }
+  .movies-card-list__more-button {
+    width: 240px;
+  }
 }
