@@ -92,10 +92,35 @@
   .profile__edit-form {
     margin-top: 82px;
   }
-  .profile__input {
-    padding: 16px 0;
-  }
   .profile__submit-button {
     margin-top: 196px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profile__edit-form {
+    width: 260px;
+    margin-top: 109px;
+  }
+  .profile {
+    justify-content: space-between;
+    padding: 70px 0 40px;
+  }
+  .profile__edit-form {
+    margin-top: 66px;
+  }
+  .profile__submit-button {
+    margin: 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  .profile__logout-link {
+    margin-top: 16px;
+    color: #ee3465;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    text-decoration: none;
   }
 }
