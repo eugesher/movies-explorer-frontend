@@ -39,6 +39,10 @@
   line-height: 13px;
 }
 
+.profile__input-container:last-child {
+  border: 0;
+}
+
 .profile__input-label {
   flex-shrink: 0;
 }
@@ -78,4 +82,20 @@
   font-size: 13px;
   line-height: 16px;
   text-decoration: none;
+}
+
+@media screen and (max-width: 1279px) {
+  .profile {
+    justify-content: start;
+    padding: 236px 0 0;
+  }
+  .profile__edit-form {
+    margin-top: 82px;
+  }
+  .profile__input {
+    padding: 16px 0;
+  }
+  .profile__submit-button {
+    margin-top: 196px;
+  }
 }
