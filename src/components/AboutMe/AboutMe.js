@@ -1,6 +1,5 @@
 import "./AboutMe.css";
 import myPhoto from "../../images/me.png";
-import { imgAltTexts } from "../../utils/constants";
 import Portfolio from "../Portfolio/Portfolio";
 
 export default function AboutMe() {
@@ -44,7 +43,7 @@ export default function AboutMe() {
               </li>
             </ul>
           </div>
-          <img src={myPhoto} alt={imgAltTexts.myPhoto} className="about-me__photo" />
+          <img src={myPhoto} alt="моё фото" className="about-me__photo" />
         </div>
         <Portfolio />
       </div>

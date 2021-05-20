@@ -1,6 +1,5 @@
 import "./Promo.css";
 import promoLogo from "../../images/landing-logo.svg";
-import { imgAltTexts } from "../../utils/constants";
 
 export default function Promo() {
   return (
@@ -16,7 +15,7 @@ export default function Promo() {
           </a>
         </div>
         <div className="promo__column">
-          <img src={promoLogo} alt={imgAltTexts.promoLogo} className="promo__logo" />
+          <img src={promoLogo} alt="промо логотип" className="promo__logo" />
         </div>
       </div>
     </section>

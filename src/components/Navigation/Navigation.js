@@ -1,6 +1,5 @@
 import "./Navigation.css";
 import { Link, Route, Switch } from "react-router-dom";
-import { linkContents } from "../../utils/constants";
 
 export default function Navigation() {
   return (
@@ -10,12 +9,12 @@ export default function Navigation() {
           <ul className="nav__content">
             <li>
               <Link to="/signup" className="nav__link">
-                {linkContents.singUp}
+                Регистрация
               </Link>
             </li>
             <li>
               <Link to="/signin" className="nav__link nav__link_type_signin">
-                {linkContents.singIn}
+                Войти
               </Link>
             </li>
           </ul>
