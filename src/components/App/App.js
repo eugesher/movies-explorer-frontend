@@ -1,6 +1,7 @@
 import "./App.css";
 // import Register from "../Register/Register";
-import Login from "../Login/Login";
+// import Login from "../Login/Login";
+import ErrorPage from "../ErrorPage/ErrorPage";
 // import Header from "../Header/Header";
 // import Main from "../Main/Main";
 // import Movies from "../Movies/Movies";
@@ -16,7 +17,8 @@ export default function App() {
       {/*<Profile />*/}
       {/*<Footer />*/}
       {/*<Register />*/}
-      <Login />
+      {/*<Login />*/}
+      <ErrorPage />
     </div>
   );
 }
