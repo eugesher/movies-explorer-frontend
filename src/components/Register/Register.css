@@ -93,3 +93,36 @@
   margin-right: 6px;
   color: #8b8b8b;
 }
+
+@media screen and (max-width: 1279px) {
+  .register {
+    margin: auto;
+    min-height: 560px;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .register {
+    width: 260px;
+    min-height: 100vh;
+    padding: 56px 0 30px;
+  }
+  .register__logo {
+    width: 38px;
+    align-self: center;
+  }
+  .register__title {
+    align-self: center;
+    margin: 50px 0 80px;
+  }
+  .register__submit-button {
+    font-size: 12px;
+    line-height: 15px;
+  }
+  .register__footer-link {
+    font-size: 12px;
+    line-height: 15px;
+    margin-top: 14px;
+  }
+}
