@@ -31,7 +31,6 @@
 }
 
 .movie-search__input {
-  font-family: inherit;
   width: 100%;
   padding: 16px;
   border: 0;
@@ -40,6 +39,7 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 20px;
+  font-family: inherit;
 }
 
 .movie-search__input::placeholder {
