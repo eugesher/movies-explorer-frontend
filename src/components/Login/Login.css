@@ -1,4 +1,4 @@
-.register {
+.login {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -8,40 +8,40 @@
   padding: 70px 0;
 }
 
-.register__container {
+.login__container {
   display: flex;
   flex-direction: column;
 }
 
-.register__logo {
+.login__logo {
   width: 38px;
 }
 
-.register__title {
+.login__title {
   margin: 40px 0;
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
 }
 
-.register__input-container {
+.login__input-container {
   display: flex;
   flex-direction: column;
   margin-top: 24px;
 }
 
-.register__input-container:first-of-type {
+.login__input-container:first-of-type {
   margin: 0;
 }
 
-.register__input-label {
+.login__input-label {
   color: #8b8b8b;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
 }
 
-.register__input {
+.login__input {
   padding: 5px 0 10px;
   border: 0;
   border-bottom: 1px solid #424242;
@@ -53,12 +53,12 @@
   font-family: inherit;
 }
 
-.register__input:focus {
+.login__input:focus {
   border-bottom: 1px solid #4285f4;
   outline: 0;
 }
 
-.register__error {
+.login__error {
   margin-top: 6px;
   color: #ee3465;
   font-weight: 400;
@@ -66,7 +66,7 @@
   line-height: 12px;
 }
 
-.register__submit-button {
+.login__submit-button {
   height: 45px;
   margin: 0;
   padding: 0;
@@ -80,7 +80,7 @@
   font-family: inherit;
 }
 
-.register__footer-link {
+.login__footer-link {
   margin-top: 16px;
   color: #4285f4;
   font-size: 14px;
@@ -89,13 +89,13 @@
   text-decoration: none;
 }
 
-.register__footer-link-span {
+.login__footer-link-span {
   margin-right: 6px;
   color: #8b8b8b;
 }
 
 @media screen and (max-width: 1279px) {
-  .register {
+  .login {
     min-height: 560px;
     margin: auto;
     padding: 0;
@@ -103,24 +103,24 @@
 }
 
 @media screen and (max-width: 767px) {
-  .register {
+  .login {
     width: 260px;
     min-height: 100vh;
     padding: 56px 0 30px;
   }
-  .register__logo {
+  .login__logo {
     align-self: center;
     width: 38px;
   }
-  .register__title {
+  .login__title {
     align-self: center;
     margin: 50px 0 80px;
   }
-  .register__submit-button {
+  .login__submit-button {
     font-size: 12px;
     line-height: 15px;
   }
-  .register__footer-link {
+  .login__footer-link {
     margin-top: 14px;
     font-size: 12px;
     line-height: 15px;
