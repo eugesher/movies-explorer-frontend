@@ -9,6 +9,7 @@ import Profile from "../Profile/Profile";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Footer from "../Footer/Footer";
 import SavedMovies from "../SavedMovies/SavedMovies";
+import AppHeader from "../AppHeader/AppHeader";
 
 function App({ history }) {
   return (
@@ -20,17 +21,17 @@ function App({ history }) {
           <Footer />
         </Route>
         <Route path="/movies">
-          <Header />
+          <AppHeader />
           <Movies />
           <Footer />
         </Route>
         <Route path="/saved-movies">
-          <Header />
+          <AppHeader />
           <SavedMovies />
           <Footer />
         </Route>
         <Route path="/profile">
-          <Header />
+          <AppHeader />
           <Profile />
         </Route>
         <Route path="/signup">
