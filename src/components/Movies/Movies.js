@@ -7,6 +7,11 @@ export default function Movies() {
     <main className="movies">
       <MovieSearch />
       <MoviesCardList />
+      <div className="movies__more-button-container">
+        <button type="button" className="movies__more-button">
+          Ещё
+        </button>
+      </div>
     </main>
   );
 }
