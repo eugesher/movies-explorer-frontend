@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -10,7 +10,11 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import Footer from "../Footer/Footer";
 import SavedMovies from "../SavedMovies/SavedMovies";
 
-export default function App() {
+function App({ history }) {
+  function handleGoBack() {
+    history.goBack();
+  }
+
   return (
     <div className="app">
       <Switch>
@@ -40,9 +44,11 @@ export default function App() {
           <Login />
         </Route>
         <Route path="*">
-          <ErrorPage />
+          <ErrorPage onGoBack={handleGoBack} />
         </Route>
       </Switch>
     </div>
   );
 }
+
+export default withRouter(App);
