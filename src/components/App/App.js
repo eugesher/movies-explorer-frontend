@@ -44,7 +44,7 @@ function App({ history }) {
           <Login />
         </Route>
         <Route path="*">
-          <ErrorPage onGoBack={handleGoBack} />
+          <ErrorPage statusCode={"404"} onGoBack={handleGoBack} />
         </Route>
       </Switch>
     </div>
