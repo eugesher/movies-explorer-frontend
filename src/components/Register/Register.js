@@ -1,5 +1,6 @@
 import "./Register.css";
 import logo from "../../images/logo.svg";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   return (
@@ -25,9 +26,9 @@ export default function Register() {
         <button type="submit" className="register__submit-button">
           Зарегистрироваться
         </button>
-        <a href="#" className="register__footer-link">
+        <Link to="/signin" className="register__footer-link">
           <span className="register__footer-link-span">Уже зарегистрированы?</span>Войти
-        </a>
+        </Link>
       </div>
     </form>
   );

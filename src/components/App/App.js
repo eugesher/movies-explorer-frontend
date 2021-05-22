@@ -19,16 +19,18 @@ export default function App() {
           <Main />
           <Footer />
         </Route>
-        <Route path={["/movies", "/saved-movies", "/profile"]}>
-          <Header />
-        </Route>
         <Route path="/movies">
+          <Header />
           <Movies />
+          <Footer />
         </Route>
         <Route path="/saved-movies">
+          <Header />
           <SavedMovies />
+          <Footer />
         </Route>
         <Route path="/profile">
+          <Header />
           <Profile />
         </Route>
         <Route path="/signup">
@@ -39,9 +41,6 @@ export default function App() {
         </Route>
         <Route path="*">
           <ErrorPage />
-        </Route>
-        <Route path={["/movies", "/saved-movies", "/profile"]}>
-          <Footer />
         </Route>
       </Switch>
     </div>
