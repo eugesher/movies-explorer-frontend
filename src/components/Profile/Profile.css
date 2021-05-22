@@ -64,6 +64,7 @@
 }
 
 .profile__submit-button {
+  margin-top: 16px;
   padding: 0;
   border: 0;
   background: 0;
@@ -86,14 +87,10 @@
 
 @media screen and (max-width: 1279px) {
   .profile {
-    justify-content: start;
-    padding: 236px 0 0;
+    padding: calc((100vh - 554px) / 2) 0 calc((100vh - 486px) / 2);
   }
   .profile__edit-form {
     margin-top: 82px;
-  }
-  .profile__submit-button {
-    margin-top: 196px;
   }
 }
 
@@ -114,13 +111,8 @@
     font-size: 12px;
     line-height: 15px;
   }
-
   .profile__logout-link {
-    margin-top: 16px;
-    color: #ee3465;
-    font-weight: 500;
     font-size: 12px;
     line-height: 15px;
-    text-decoration: none;
   }
 }
