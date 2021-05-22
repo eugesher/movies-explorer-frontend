@@ -64,6 +64,10 @@
   line-height: 18px;
 }
 
+.movie-search__submit-button {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 1279px) {
   .movie-search__content {
     padding: 0 30px;
