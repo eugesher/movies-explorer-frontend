@@ -6,7 +6,7 @@ export default function Movies() {
   return (
     <main className="movies">
       <MovieSearch />
-      <MoviesCardList />
+      <MoviesCardList isSaved={false} />
       <div className="movies__more-button-container">
         <button type="button" className="movies__more-button">
           Ещё

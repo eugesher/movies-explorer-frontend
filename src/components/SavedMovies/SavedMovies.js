@@ -6,7 +6,7 @@ export default function SavedMovies() {
   return (
     <main className="saved-movies">
       <MovieSearch />
-      <MoviesCardList />
+      <MoviesCardList isSaved={true} />
     </main>
   );
 }

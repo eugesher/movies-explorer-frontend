@@ -35,18 +35,18 @@
   line-height: 13px;
 }
 
-.movies-card__like-button {
+.movies-card__action-button {
   margin: 0;
   padding: 0;
   border: 0;
   background: 0;
 }
 
-.movies-card__like-button:hover {
+.movies-card__action-button:hover {
   cursor: pointer;
 }
 
-.movies-card__like-button-image {
+.movies-card__action-button-image {
   width: 14px;
   height: 12px;
 }
@@ -77,7 +77,7 @@
     font-size: 12px;
     line-height: 15px;
   }
-  .movies-card__like-button {
+  .movies-card__action-button {
     padding: 5px 4px;
   }
   .movies-card__preview {
