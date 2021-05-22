@@ -9,11 +9,11 @@ export default function Profile() {
         <form name="profileEdit" id="profile-edit" className="profile__edit-form">
           <label className="profile__input-container">
             <span className="profile__input-label">Имя</span>
-            <input type="text" className="profile__input" />
+            <input type="text" required={true} className="profile__input" />
           </label>
           <label className="profile__input-container">
             <span className="profile__input-label">E-mail</span>
-            <input type="email" className="profile__input" />
+            <input type="email" required={true} className="profile__input" />
           </label>
         </form>
       </div>

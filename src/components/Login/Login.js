@@ -10,11 +10,11 @@ export default function Login({ onSubmit }) {
         <h2 className="login__title">Рады видеть!</h2>
         <label className="login__input-container">
           <span className="login__input-label">E-mail</span>
-          <input type="email" className="login__input" />
+          <input type="email" required={true} className="login__input" />
         </label>
         <label className="login__input-container">
           <span className="login__input-label">Пароль</span>
-          <input type="password" className="login__input" />
+          <input type="password" required={true} className="login__input" />
         </label>
         <span className="login__error">Что-то пошло не так...</span>
       </div>
