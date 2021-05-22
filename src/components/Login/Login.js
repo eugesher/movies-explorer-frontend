@@ -2,9 +2,9 @@ import "./Login.css";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 
-export default function Login() {
+export default function Login({ onSubmit }) {
   return (
-    <form className="login">
+    <form className="login" onSubmit={onSubmit}>
       <div className="login__container">
         <img src={logo} alt="логотип" className="login__logo" />
         <h2 className="login__title">Рады видеть!</h2>

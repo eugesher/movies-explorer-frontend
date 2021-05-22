@@ -11,10 +11,6 @@ import Footer from "../Footer/Footer";
 import SavedMovies from "../SavedMovies/SavedMovies";
 
 function App({ history }) {
-  function handleGoBack() {
-    history.goBack();
-  }
-
   return (
     <div className="app">
       <Switch>
@@ -41,10 +37,14 @@ function App({ history }) {
           <Register />
         </Route>
         <Route path="/signin">
-          <Login />
+          <Login
+            onSubmit={() => {
+              history.push("/movies");
+            }}
+          />
         </Route>
         <Route path="*">
-          <ErrorPage statusCode={"404"} onGoBack={handleGoBack} />
+          <ErrorPage statusCode={"404"} onGoBack={history.goBack} />
         </Route>
       </Switch>
     </div>

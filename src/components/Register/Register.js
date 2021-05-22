@@ -1,6 +1,6 @@
 import "./Register.css";
 import logo from "../../images/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, Redirect, Route } from "react-router-dom";
 
 export default function Register() {
   return (
@@ -23,7 +23,18 @@ export default function Register() {
         <span className="register__error">Что-то пошло не так...</span>
       </div>
       <div className="register__container">
-        <button type="submit" className="register__submit-button">
+        <button
+          type="submit"
+          className="register__submit-button"
+          onClick={(event) => {
+            event.preventDefault();
+            return (
+              <Route>
+                <Redirect to="/signin" />
+              </Route>
+            );
+          }}
+        >
           Зарегистрироваться
         </button>
         <Link to="/signin" className="register__footer-link">
