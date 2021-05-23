@@ -1,5 +1,5 @@
 import "./AppHeader.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import menuIcon from "../../images/menu.svg";
 import ProfileLink from "../ProfileLink/ProfileLink";
@@ -10,14 +10,22 @@ export default function AppHeader({ windowWidth, onOpenMobileMenu }) {
       <nav className="app-header__nav">
         <ul className="app-header__nav-content">
           <li>
-            <Link to="/movies" className="app-header__nav-link">
+            <NavLink
+              to="/movies"
+              className="app-header__nav-link"
+              activeClassName="app-header__nav-link_active"
+            >
               Фильмы
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link to="/saved-movies" className="app-header__nav-link">
+            <NavLink
+              to="/saved-movies"
+              className="app-header__nav-link"
+              activeClassName="app-header__nav-link_active"
+            >
               Сохранённые фильмы
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </nav>

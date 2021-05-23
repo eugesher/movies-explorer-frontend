@@ -31,7 +31,7 @@
 .app-header__nav-link {
   box-sizing: border-box;
   color: inherit;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 13px;
   line-height: 18px;
   text-decoration: none;
@@ -40,6 +40,10 @@
 
 .app-header__nav-link:hover {
   opacity: 0.7;
+}
+
+.app-header__nav-link_active {
+  font-weight: 500;
 }
 
 .app-header__profile-link {
