@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
@@ -10,10 +11,31 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import Footer from "../Footer/Footer";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import AppHeader from "../AppHeader/AppHeader";
+import MobileMenu from "../MobileMenu/MobileMenu";
 
 function App({ history }) {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  function openMobileMenu() {
+    setIsMobileMenuOpen(true);
+  }
+
+  function closeMobileMenu() {
+    setIsMobileMenuOpen(false);
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+  }, [windowWidth]);
+
   return (
     <div className="app">
+      <Switch>
+        <Route path={["/movies", "/saved-movies", "/profile"]}>
+          <AppHeader windowWidth={windowWidth} onOpenMobileMenu={openMobileMenu} />
+        </Route>
+      </Switch>
       <Switch>
         <Route exact path="/">
           <Header />
@@ -21,17 +43,12 @@ function App({ history }) {
           <Footer />
         </Route>
         <Route path="/movies">
-          <AppHeader />
           <Movies />
-          <Footer />
         </Route>
         <Route path="/saved-movies">
-          <AppHeader />
           <SavedMovies />
-          <Footer />
         </Route>
         <Route path="/profile">
-          <AppHeader />
           <Profile />
         </Route>
         <Route path="/signup">
@@ -48,6 +65,12 @@ function App({ history }) {
           <ErrorPage statusCode={"404"} onGoBack={history.goBack} />
         </Route>
       </Switch>
+      <Switch>
+        <Route path={["/movies", "/saved-movies"]}>
+          <Footer />
+        </Route>
+      </Switch>
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={closeMobileMenu} />
     </div>
   );
 }

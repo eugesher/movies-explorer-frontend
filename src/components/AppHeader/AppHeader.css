@@ -64,13 +64,21 @@
   background-color: #313131;
 }
 
-@media screen and (max-width: 767px) {
-  .app-header__nav-content {
-    gap: 2px;
+@media screen and (max-width: 1279px) {
+  .app-header__content {
+    grid-template-columns: 1fr min-content;
+    padding: 0 30px;
   }
-  .app-header__nav-link {
-    padding: 7px 12px;
-    font-size: 10px;
-    line-height: 16px;
+  .app-header__menu-button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .app-header__content {
+    padding: 0 14px;
   }
 }
