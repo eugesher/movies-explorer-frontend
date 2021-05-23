@@ -11,6 +11,11 @@
   margin: 0 auto;
   padding: 0 70px 10px;
   gap: 40px;
+  list-style-type: none;
+}
+
+.movies-card-list__card {
+  width: 100%;
 }
 
 @media screen and (max-width: 1279px) {
