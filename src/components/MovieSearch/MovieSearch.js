@@ -20,6 +20,7 @@ export default function MovieSearch() {
               className="movie-search__input"
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
+              required
             />
             <button type="submit" className="movie-search__submit-button">
               Поиск
