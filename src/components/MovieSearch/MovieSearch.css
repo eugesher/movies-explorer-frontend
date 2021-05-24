@@ -30,6 +30,10 @@
   border-radius: 8px;
 }
 
+.movie-search__input-group_focused {
+  border: 2px solid #aaaaaa;
+}
+
 .movie-search__input {
   width: 100%;
   padding: 16px;
