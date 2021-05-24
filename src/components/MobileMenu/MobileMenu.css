@@ -15,8 +15,8 @@
   }
   .mobile-menu_opened {
     visibility: visible;
-    opacity: 1;
     transform: translateX(-520px);
+    opacity: 1;
   }
   .mobile-menu__close-button {
     position: absolute;
