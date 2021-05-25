@@ -33,7 +33,7 @@ export default function MoviesCard({ isSaved, data }) {
         </button>
       </div>
       <img
-        src={!!data.image && `https://api.nomoreparties.co${data.image.url}`}
+        src={!!data.image ? `https://api.nomoreparties.co${data.image.url}` : ""}
         alt="превью постера фильма"
         className="movies-card__preview"
       />
