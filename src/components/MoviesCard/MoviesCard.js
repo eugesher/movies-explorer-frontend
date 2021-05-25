@@ -2,10 +2,10 @@ import "./MoviesCard.css";
 import heart from "../../images/heart.svg";
 import heartSolid from "../../images/heart-solid.svg";
 import crossIcon from "../../images/cross.svg";
-import preview from "../../images/preview.png";
 import { useState } from "react";
+import { formatMovieDuration } from "../../utils/utils";
 
-export default function MoviesCard({ isSaved }) {
+export default function MoviesCard({ isSaved, data }) {
   const [isLiked, setIsLiked] = useState(false);
 
   function handleLikeClick() {
@@ -13,11 +13,16 @@ export default function MoviesCard({ isSaved }) {
   }
 
   return (
-    <div className="movies-card">
+    <div
+      onClick={() => {
+        window.open(data.trailerLink, "_blank", "noreferrer");
+      }}
+      className="movies-card"
+    >
       <div className="movies-card__main-container">
         <div className="movies-card__info-container">
-          <h2 className="movies-card__title">33 слова о дизайне</h2>
-          <p className="movies-card__duration">1ч 42м</p>
+          <h2 className="movies-card__title">{data.nameRU}</h2>
+          <p className="movies-card__duration">{formatMovieDuration(data.duration)}</p>
         </div>
         <button onClick={handleLikeClick} type="button" className="movies-card__action-button">
           <img
@@ -27,7 +32,11 @@ export default function MoviesCard({ isSaved }) {
           />
         </button>
       </div>
-      <img src={preview} alt="превью постера фильма" className="movies-card__preview" />
+      <img
+        src={!!data.image && `https://api.nomoreparties.co${data.image.url}`}
+        alt="превью постера фильма"
+        className="movies-card__preview"
+      />
     </div>
   );
 }

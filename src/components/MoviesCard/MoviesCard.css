@@ -8,6 +8,7 @@
   height: 134px;
   padding: 6px;
   background-color: #2f2f2f;
+  cursor: pointer;
 }
 
 .movies-card__main-container {
