@@ -12,12 +12,10 @@ import Footer from "../Footer/Footer";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import AppHeader from "../AppHeader/AppHeader";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import moviesApi from "../../utils/MoviesApi";
 
 function App({ history }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [movies, setMovies] = useState([]);
 
   function openMobileMenu() {
     setIsMobileMenuOpen(true);
@@ -30,17 +28,6 @@ function App({ history }) {
   useEffect(() => {
     window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
   }, [windowWidth]);
-
-  useEffect(() => {
-    moviesApi
-      .getMovies()
-      .then((data) => {
-        setMovies(data);
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-  }, []);
 
   return (
     <div className="app">
@@ -56,7 +43,7 @@ function App({ history }) {
           <Footer />
         </Route>
         <Route path="/movies">
-          <Movies movies={movies} />
+          <Movies windowWidth={windowWidth} />
         </Route>
         <Route path="/saved-movies">
           <SavedMovies />
