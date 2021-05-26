@@ -19,12 +19,17 @@ export default function Movies({ windowWidth }) {
   }
 
   function resetMovies() {
+    const movies = JSON.parse(localStorage.getItem("movies"));
+    if (movies) {
+      setMovies(movies);
+    } else {
+      setMovies([]);
+    }
     if (windowWidth >= 480) {
       setMoviesCount(6);
     } else {
       setMoviesCount(5);
     }
-    setMovies([]);
   }
 
   function showErrorMessage(message) {
@@ -61,6 +66,7 @@ export default function Movies({ windowWidth }) {
         setIsPreloaderShown(false);
         if (!!matchedMovies.length) {
           setMovies(matchedMovies);
+          localStorage.setItem("movies", JSON.stringify(matchedMovies));
         } else {
           showErrorMessage(movieSearchErrors.notFound);
         }
