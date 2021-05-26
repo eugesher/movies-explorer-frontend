@@ -1,19 +1,31 @@
 import "./Register.css";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
-export default function Register({ onRegister }) {
+export default function Register({ onRegister, errorMessage }) {
   const [formValues, setFormValues] = useState({});
-  const [errors, setErrors] = useState({});
+  const [inputErrors, setInputErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
+  const nameInput = useRef();
+
+  function validateUserName() {
+    const input = nameInput.current;
+    const re = /^[\wа-я\sё-]+$/;
+    if (re.test(input.value)) {
+      input.setCustomValidity("");
+    } else {
+      input.setCustomValidity("Недопустимое имя пользователя");
+    }
+  }
 
   function handleInputChange(event) {
     const target = event.target;
     const name = target.name;
     const value = target.value;
+    validateUserName();
     setFormValues({ ...formValues, [name]: value });
-    setErrors({ ...errors, [name]: target.validationMessage });
+    setInputErrors({ ...inputErrors, [name]: target.validationMessage });
     setIsValid(target.closest("form").checkValidity());
   }
 
@@ -35,8 +47,9 @@ export default function Register({ onRegister }) {
             required={true}
             onChange={handleInputChange}
             className="register__input"
+            ref={nameInput}
           />
-          <span className="register__error">{errors.name}</span>
+          <span className="register__input-error">{inputErrors.name}</span>
         </label>
         <label className="register__input-container">
           <span className="register__input-label">E-mail</span>
@@ -47,7 +60,7 @@ export default function Register({ onRegister }) {
             onChange={handleInputChange}
             className="register__input"
           />
-          <span className="register__error">{errors.email}</span>
+          <span className="register__input-error">{inputErrors.email}</span>
         </label>
         <label className="register__input-container">
           <span className="register__input-label">Пароль</span>
@@ -58,10 +71,11 @@ export default function Register({ onRegister }) {
             onChange={handleInputChange}
             className="register__input"
           />
-          <span className="register__error">{errors.password}</span>
+          <span className="register__input-error">{inputErrors.password}</span>
         </label>
       </div>
       <div className="register__container">
+        <span className="register__error">{errorMessage}</span>
         <button type="submit" disabled={!isValid} className="register__submit-button">
           Зарегистрироваться
         </button>

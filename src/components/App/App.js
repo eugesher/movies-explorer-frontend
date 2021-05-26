@@ -17,6 +17,7 @@ import { register } from "../../utils/auth";
 function App({ history }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [registerErrorMessage, setRegisterErrorMessage] = useState("");
 
   function openMobileMenu() {
     setIsMobileMenuOpen(true);
@@ -28,7 +29,15 @@ function App({ history }) {
 
   function handleRegister({ email, password, name }) {
     register({ email, password, name })
-      .then(() => history.push("/signin"))
+      .then((data) => {
+        if (data.statusCode === 400) {
+          setRegisterErrorMessage(data.validation.body.message);
+        } else if (data.message) {
+          setRegisterErrorMessage(data.message);
+        } else if (data._id) {
+          setRegisterErrorMessage("");
+        }
+      })
       .catch((e) => {
         console.error(e);
       });
@@ -61,7 +70,7 @@ function App({ history }) {
           <Profile />
         </Route>
         <Route path="/signup">
-          <Register onRegister={handleRegister} />
+          <Register onRegister={handleRegister} errorMessage={registerErrorMessage} />
         </Route>
         <Route path="/signin">
           <Login
