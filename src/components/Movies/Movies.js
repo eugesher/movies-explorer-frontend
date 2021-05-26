@@ -37,7 +37,7 @@ export default function Movies({ windowWidth }) {
   }
 
   function handleMovieSearch(queryString) {
-    if (!queryString) {
+    if (queryString.trim() === "") {
       showErrorMessage(movieSearchErrors.requiredField);
       return;
     }
