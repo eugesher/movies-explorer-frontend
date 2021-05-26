@@ -20,12 +20,12 @@ class MainApi {
     }).then(this._getData);
   }
 
-  patchUserInfo({email, name}) {
+  patchUserInfo({ email, name }) {
     this._setHeaders();
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({email, name}),
+      body: JSON.stringify({ email, name }),
     }).then(this._getData);
   }
 
