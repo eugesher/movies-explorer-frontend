@@ -3,17 +3,20 @@ import MovieSearch from "../MovieSearch/MovieSearch";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import { useEffect, useState } from "react";
 import moviesApi from "../../utils/MoviesApi";
+import Preloader from "../Preloader/Preloader";
 
 export default function Movies({ windowWidth }) {
   const [movies, setMovies] = useState([]);
   const [moviesCount, setMoviesCount] = useState(0);
   const [addedMoviesCount, setAddedMoviesCount] = useState(0);
+  const [isPreloaderShown, setIsPreloaderShown] = useState(false);
 
   function handleMoreButtonClick() {
     setMoviesCount(moviesCount + addedMoviesCount);
   }
 
   function handleMovieSearch(queryString) {
+    setIsPreloaderShown(true);
     const matchedMovies = [];
     moviesApi
       .getMovies()
@@ -27,6 +30,7 @@ export default function Movies({ windowWidth }) {
         return matchedMovies;
       })
       .then((matchedMovies) => {
+        setIsPreloaderShown(false);
         setMovies(matchedMovies);
       })
       .catch((e) => {
@@ -51,21 +55,11 @@ export default function Movies({ windowWidth }) {
     }
   }, [windowWidth]);
 
-  // useEffect(() => {
-  //   moviesApi
-  //     .getMovies()
-  //     .then((data) => {
-  //       setMovies(data);
-  //     })
-  //     .catch((e) => {
-  //       console.error(e);
-  //     });
-  // }, []);
-
   return (
     <main className="movies">
       <MovieSearch onMovieSearch={handleMovieSearch} />
-      <MoviesCardList isSaved={false} movies={movies.slice(0, moviesCount)} />
+      {!!movies.length && <MoviesCardList isSaved={false} movies={movies.slice(0, moviesCount)} />}
+      {isPreloaderShown && <Preloader />}
       <div className="movies__more-button-container">
         <button type="button" onClick={handleMoreButtonClick} className="movies__more-button">
           Ещё
