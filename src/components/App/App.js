@@ -12,12 +12,13 @@ import Footer from "../Footer/Footer";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import AppHeader from "../AppHeader/AppHeader";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import { register } from "../../utils/auth";
+import { authorize, register } from "../../utils/auth";
 
 function App({ history }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [registerErrorMessage, setRegisterErrorMessage] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
 
   function openMobileMenu() {
     setIsMobileMenuOpen(true);
@@ -25,6 +26,19 @@ function App({ history }) {
 
   function closeMobileMenu() {
     setIsMobileMenuOpen(false);
+  }
+
+  function handleLogin({ email, password }) {
+    authorize({ email, password })
+      .then(({ token }) => {
+        if (token) {
+          setLoggedIn(true);
+        }
+      })
+      .then(() => history.push("/movies"))
+      .catch((e) => {
+        console.error(e);
+      });
   }
 
   function handleRegister({ email, password, name }) {
@@ -37,6 +51,9 @@ function App({ history }) {
         } else if (data._id) {
           setRegisterErrorMessage("");
         }
+      })
+      .then(() => {
+        handleLogin({ email, password });
       })
       .catch((e) => {
         console.error(e);
