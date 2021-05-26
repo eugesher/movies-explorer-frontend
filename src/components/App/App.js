@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import AppHeader from "../AppHeader/AppHeader";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import { register } from "../../utils/auth";
 
 function App({ history }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -23,6 +24,14 @@ function App({ history }) {
 
   function closeMobileMenu() {
     setIsMobileMenuOpen(false);
+  }
+
+  function handleRegister({ email, password, name }) {
+    register({ email, password, name })
+      .then(() => history.push("/signin"))
+      .catch((e) => {
+        console.error(e);
+      });
   }
 
   useEffect(() => {
@@ -52,7 +61,7 @@ function App({ history }) {
           <Profile />
         </Route>
         <Route path="/signup">
-          <Register />
+          <Register onRegister={handleRegister} />
         </Route>
         <Route path="/signin">
           <Login
