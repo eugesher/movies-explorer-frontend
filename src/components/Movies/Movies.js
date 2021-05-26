@@ -33,7 +33,7 @@ export default function Movies({ windowWidth }) {
   }
 
   function showErrorMessage(message) {
-    resetMovies();
+    setMovies([]);
     setErrorMessage({ isShown: true, message });
   }
 

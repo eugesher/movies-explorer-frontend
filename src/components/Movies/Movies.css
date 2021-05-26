@@ -43,7 +43,18 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 1279px) {
+  .movies__error-message {
+    padding: 60px 30px 30px;
+  }
+}
+
 @media screen and (max-width: 767px) {
+  .movies__error-message {
+    padding: 40px 10px;
+    font-size: 12px;
+    line-height: 15px;
+  }
   .movies__more-button-container {
     padding-top: 70px;
   }
