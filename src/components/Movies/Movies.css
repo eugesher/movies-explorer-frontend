@@ -2,6 +2,19 @@
   width: 100%;
 }
 
+.movies__error-message {
+  box-sizing: border-box;
+  display: block;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 70px;
+  color: #ff004c;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+}
+
 .movies__more-button-container {
   display: flex;
   flex-direction: column;

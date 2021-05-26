@@ -18,7 +18,7 @@ export default function MovieSearch({ onMovieSearch }) {
   return (
     <section className="movie-search">
       <div className="movie-search__content">
-        <form onSubmit={handleSubmit} className="movie-search__form">
+        <form noValidate onSubmit={handleSubmit} className="movie-search__form">
           <div
             className={`movie-search__input-group ${
               isFocused && "movie-search__input-group_focused"

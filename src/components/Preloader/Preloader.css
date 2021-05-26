@@ -41,38 +41,38 @@
 
 .preloader {
   display: flex;
+  z-index: 10;
   align-items: center;
   justify-content: center;
   height: 100%;
-  z-index: 10;
   padding: 20px;
 }
 
 .preloader__container {
+  position: relative;
   width: 100px;
   height: 100px;
-  position: relative;
 }
 
 .preloader__round {
-  width: 100px;
-  height: 100px;
   position: absolute;
   top: 0;
   left: 0;
-  background: inherit;
+  width: 100px;
+  height: 100px;
   border-radius: 50px;
+  background: inherit;
 }
 
 .preloader__round::after,
 .preloader__round::before {
-  content: "";
-  width: 100px;
-  height: 100px;
   position: absolute;
   top: 0;
   left: 0;
+  width: 100px;
+  height: 100px;
   border-radius: 50px;
+  content: "";
 }
 
 .preloader__round::after {
