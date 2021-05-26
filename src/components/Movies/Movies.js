@@ -10,6 +10,7 @@ export default function Movies({ windowWidth }) {
   const [moviesCount, setMoviesCount] = useState(0);
   const [addedMoviesCount, setAddedMoviesCount] = useState(0);
   const [isPreloaderShown, setIsPreloaderShown] = useState(false);
+  const [isMoreButtonShown, setIsMoreButtonShown] = useState(false);
 
   function handleMoreButtonClick() {
     setMoviesCount(moviesCount + addedMoviesCount);
@@ -55,15 +56,25 @@ export default function Movies({ windowWidth }) {
     }
   }, [windowWidth]);
 
+  useEffect(() => {
+    if (moviesCount >= movies.length) {
+      setIsMoreButtonShown(false);
+    } else {
+      setIsMoreButtonShown(true);
+    }
+  }, [movies.length, moviesCount]);
+
   return (
     <main className="movies">
       <MovieSearch onMovieSearch={handleMovieSearch} />
       {!!movies.length && <MoviesCardList isSaved={false} movies={movies.slice(0, moviesCount)} />}
       {isPreloaderShown && <Preloader />}
       <div className="movies__more-button-container">
-        <button type="button" onClick={handleMoreButtonClick} className="movies__more-button">
-          Ещё
-        </button>
+        {isMoreButtonShown && (
+          <button type="button" onClick={handleMoreButtonClick} className="movies__more-button">
+            Ещё
+          </button>
+        )}
       </div>
     </main>
   );
