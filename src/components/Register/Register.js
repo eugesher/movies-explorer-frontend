@@ -5,9 +5,16 @@ import { useState } from "react";
 
 export default function Register({ onRegister }) {
   const [formValues, setFormValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const [isValid, setIsValid] = useState(false);
 
   function handleInputChange(event) {
-    setFormValues({ ...formValues, [event.target.name]: event.target.value });
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+    setFormValues({ ...formValues, [name]: value });
+    setErrors({ ...errors, [name]: target.validationMessage });
+    setIsValid(target.closest("form").checkValidity());
   }
 
   function handleSubmit(event) {
@@ -29,6 +36,7 @@ export default function Register({ onRegister }) {
             onChange={handleInputChange}
             className="register__input"
           />
+          <span className="register__error">{errors.name}</span>
         </label>
         <label className="register__input-container">
           <span className="register__input-label">E-mail</span>
@@ -39,6 +47,7 @@ export default function Register({ onRegister }) {
             onChange={handleInputChange}
             className="register__input"
           />
+          <span className="register__error">{errors.email}</span>
         </label>
         <label className="register__input-container">
           <span className="register__input-label">Пароль</span>
@@ -49,11 +58,11 @@ export default function Register({ onRegister }) {
             onChange={handleInputChange}
             className="register__input"
           />
+          <span className="register__error">{errors.password}</span>
         </label>
-        <span className="register__error">Что-то пошло не так...</span>
       </div>
       <div className="register__container">
-        <button type="submit" className="register__submit-button">
+        <button type="submit" disabled={!isValid} className="register__submit-button">
           Зарегистрироваться
         </button>
         <Link to="/signin" className="register__footer-link">
