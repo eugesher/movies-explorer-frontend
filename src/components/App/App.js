@@ -128,11 +128,14 @@ function App({ history }) {
 
   return (
     <div className="app">
-      <Header windowWidth={windowWidth} loggedIn={loggedIn} onOpenMobileMenu={openMobileMenu} />
+      <Switch>
+        <Route path={["/", "/movies", "/saved-movies", "/profile"]} exact>
+          <Header windowWidth={windowWidth} loggedIn={loggedIn} onOpenMobileMenu={openMobileMenu} />
+        </Route>
+      </Switch>
       <Switch>
         <Route exact path="/">
           <Main />
-          <Footer />
         </Route>
         <Route path="/movies">
           <Movies windowWidth={windowWidth} />
@@ -164,11 +167,11 @@ function App({ history }) {
           />
         </Route>
         <Route path="*">
-          <ErrorPage statusCode={"404"} onGoBack={history.goBack} />
+          <ErrorPage statusCode={"404"} onGoBack={() => history.push("/")} />
         </Route>
       </Switch>
       <Switch>
-        <Route path={["/movies", "/saved-movies"]}>
+        <Route path={["/", "/movies", "/saved-movies"]} exact>
           <Footer />
         </Route>
       </Switch>
