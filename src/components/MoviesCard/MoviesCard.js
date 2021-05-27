@@ -5,8 +5,11 @@ import crossIcon from "../../images/cross.svg";
 import { formatMovieDuration } from "../../utils/utils";
 import { useLocation } from "react-router-dom";
 
-export default function MoviesCard({ isSaved, data, onMovieSave, onMovieDelete }) {
+export default function MoviesCard({ data, isMovieSaved, onMovieSave, onMovieDelete }) {
   const location = useLocation();
+
+  const isSaved = isMovieSaved(data);
+  // console.log(isSaved);
 
   const saveButton = () => {
     function handleLikeClick() {
