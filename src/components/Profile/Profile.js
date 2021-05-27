@@ -2,7 +2,7 @@ import "./Profile.css";
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
-export default function Profile({ user, onMount, onUpdateUser, responseMessage }) {
+export default function Profile({ user, onMount, onUpdateUser, onLogout, responseMessage }) {
   const [formValues, setFormValues] = useState({});
   const [inputErrors, setInputErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
@@ -82,7 +82,7 @@ export default function Profile({ user, onMount, onUpdateUser, responseMessage }
         >
           Редактировать
         </button>
-        <Link to="/" className="profile__logout-link">
+        <Link to="/" onClick={onLogout} className="profile__logout-link">
           Выйти из аккаунта
         </Link>
       </div>

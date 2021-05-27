@@ -46,6 +46,11 @@ function App({ history }) {
       });
   }
 
+  function handleLogout() {
+    localStorage.removeItem("jwt");
+    setLoggedIn(false);
+  }
+
   function handleRegister({ email, password, name }) {
     register({ email, password, name })
       .then((data) => {
@@ -140,6 +145,7 @@ function App({ history }) {
             user={currentUser}
             onMount={resetResponseMessage}
             onUpdateUser={handleUpdateUser}
+            onLogout={handleLogout}
             responseMessage={responseMessage}
           />
         </Route>
