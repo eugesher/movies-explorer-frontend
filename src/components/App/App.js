@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import "./App.css";
-import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
@@ -10,10 +9,10 @@ import Profile from "../Profile/Profile";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Footer from "../Footer/Footer";
 import SavedMovies from "../SavedMovies/SavedMovies";
-import AppHeader from "../AppHeader/AppHeader";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import { authorize, checkToken, register } from "../../utils/auth";
 import mainApi from "../../utils/MainApi";
+import Header from "../Header/Header";
 
 function App({ history }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -102,14 +101,9 @@ function App({ history }) {
 
   return (
     <div className="app">
-      <Switch>
-        <Route path={["/movies", "/saved-movies", "/profile"]}>
-          <AppHeader windowWidth={windowWidth} onOpenMobileMenu={openMobileMenu} />
-        </Route>
-      </Switch>
+      <Header windowWidth={windowWidth} loggedIn={loggedIn} onOpenMobileMenu={openMobileMenu} />
       <Switch>
         <Route exact path="/">
-          <Header />
           <Main />
           <Footer />
         </Route>
