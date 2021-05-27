@@ -12,13 +12,15 @@ import Footer from "../Footer/Footer";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import AppHeader from "../AppHeader/AppHeader";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import { authorize, register } from "../../utils/auth";
+import { authorize, checkToken, register } from "../../utils/auth";
+import mainApi from "../../utils/MainApi";
 
 function App({ history }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [registerErrorMessage, setRegisterErrorMessage] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
 
   function openMobileMenu() {
     setIsMobileMenuOpen(true);
@@ -60,9 +62,43 @@ function App({ history }) {
       });
   }
 
+  function handleCheckToken() {
+    if (localStorage.getItem("jwt")) {
+      const token = localStorage.getItem("jwt");
+      checkToken(token)
+        .then((data) => {
+          if (data.email) {
+            setLoggedIn(true);
+          }
+        })
+        .then(history.push("/movies"))
+        .catch((e) => {
+          history.push("/");
+          console.error(e);
+        });
+    }
+  }
+
   useEffect(() => {
     window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
   }, [windowWidth]);
+
+  useEffect(() => {
+    loggedIn &&
+      mainApi
+        .getUserInfo()
+        .then((data) => {
+          setCurrentUser(data);
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+  }, [loggedIn]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(handleCheckToken, []);
+
+  console.log(currentUser);
 
   return (
     <div className="app">
