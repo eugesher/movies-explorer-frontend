@@ -1,6 +1,6 @@
 class MoviesApi {
   constructor() {
-    this._baseUrl = "https://api.nomoreparties.co/beatfilm-moviesa";
+    this._baseUrl = "https://api.nomoreparties.co/beatfilm-movies";
     this._headers = { "Content-Type": "application/json" };
   }
 
