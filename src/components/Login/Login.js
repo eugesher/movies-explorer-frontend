@@ -3,7 +3,7 @@ import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-export default function Login({ onMount, onLogin }) {
+export default function Login({ onMount, onLogin, responseMessage }) {
   const [formValues, setFormValues] = useState({});
   const [inputErrors, setInputErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
@@ -54,6 +54,7 @@ export default function Login({ onMount, onLogin }) {
         </label>
       </div>
       <div className="login__container">
+        <span className="login__error">{responseMessage.message}</span>
         <button type="submit" disabled={!isValid} className="login__submit-button">
           Войти
         </button>

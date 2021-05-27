@@ -35,10 +35,12 @@ function App({ history }) {
 
   function handleLogin({ email, password }) {
     authorize({ email, password })
-      .then(({ token }) => {
-        if (token) {
+      .then((data) => {
+        if (data.token) {
           setLoggedIn(true);
           history.push("/movies");
+        } else if (data.message) {
+          setResponseMessage({ success: false, message: data.message });
         }
       })
       .catch((e) => {
@@ -124,8 +126,6 @@ function App({ history }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(handleCheckToken, []);
 
-  console.log(currentUser);
-
   return (
     <div className="app">
       <Header windowWidth={windowWidth} loggedIn={loggedIn} onOpenMobileMenu={openMobileMenu} />
@@ -157,7 +157,11 @@ function App({ history }) {
           />
         </Route>
         <Route path="/signin">
-          <Login onMount={resetResponseMessage} onLogin={handleLogin} />
+          <Login
+            onMount={resetResponseMessage}
+            onLogin={handleLogin}
+            responseMessage={responseMessage}
+          />
         </Route>
         <Route path="*">
           <ErrorPage statusCode={"404"} onGoBack={history.goBack} />

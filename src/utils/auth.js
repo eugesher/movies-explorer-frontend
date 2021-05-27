@@ -22,8 +22,8 @@ export function authorize({ email, password }) {
     .then((data) => {
       if (data.token) {
         localStorage.setItem("jwt", data.token);
-        return data;
       }
+      return data;
     });
 }
 
