@@ -33,9 +33,9 @@ function App({ history }) {
       .then(({ token }) => {
         if (token) {
           setLoggedIn(true);
+          history.push("/movies");
         }
       })
-      .then(() => history.push("/movies"))
       .catch((e) => {
         console.error(e);
       });
@@ -90,11 +90,7 @@ function App({ history }) {
           <Register onRegister={handleRegister} errorMessage={registerErrorMessage} />
         </Route>
         <Route path="/signin">
-          <Login
-            onSubmit={() => {
-              history.push("/movies");
-            }}
-          />
+          <Login onLogin={handleLogin} />
         </Route>
         <Route path="*">
           <ErrorPage statusCode={"404"} onGoBack={history.goBack} />

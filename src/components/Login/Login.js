@@ -1,25 +1,57 @@
 import "./Login.css";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-export default function Login({ onSubmit }) {
+export default function Login({ onLogin }) {
+  const [formValues, setFormValues] = useState({});
+  const [inputErrors, setInputErrors] = useState({});
+  const [isValid, setIsValid] = useState(false);
+
+  function handleInputChange(event) {
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+    setFormValues({ ...formValues, [name]: value });
+    setInputErrors({ ...inputErrors, [name]: target.validationMessage });
+    setIsValid(target.closest("form").checkValidity());
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    onLogin(formValues);
+  }
+
   return (
-    <form className="login" onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit} className="login">
       <div className="login__container">
         <img src={logo} alt="логотип" className="login__logo" />
         <h2 className="login__title">Рады видеть!</h2>
         <label className="login__input-container">
           <span className="login__input-label">E-mail</span>
-          <input type="email" required={true} className="login__input" />
+          <input
+            name="email"
+            type="email"
+            required={true}
+            onChange={handleInputChange}
+            className="login__input"
+          />
+          <span className="login__input-error">{inputErrors.email}</span>
         </label>
         <label className="login__input-container">
           <span className="login__input-label">Пароль</span>
-          <input type="password" required={true} className="login__input" />
+          <input
+            name="password"
+            type="password"
+            required={true}
+            onChange={handleInputChange}
+            className="login__input"
+          />
+          <span className="login__input-error">{inputErrors.password}</span>
         </label>
-        <span className="login__error">Что-то пошло не так...</span>
       </div>
       <div className="login__container">
-        <button type="submit" className="login__submit-button">
+        <button type="submit" disabled={!isValid} className="login__submit-button">
           Войти
         </button>
         <Link to="/signup" className="login__footer-link">
