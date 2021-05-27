@@ -20,6 +20,7 @@ function App({ history }) {
   const [responseMessage, setResponseMessage] = useState({ success: false, message: "" });
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [savedMovies, setSavedMovies] = useState([]);
 
   function openMobileMenu() {
     setIsMobileMenuOpen(true);
@@ -123,6 +124,22 @@ function App({ history }) {
         });
   }, [loggedIn]);
 
+  useEffect(() => {
+    loggedIn &&
+      mainApi
+        .getMovies()
+        .then((data) => {
+          if (data) {
+            setSavedMovies(data);
+          } else {
+            setSavedMovies([]);
+          }
+        })
+        .catch((e) => {
+          console.error(e);
+        });
+  }, [loggedIn]);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(handleCheckToken, []);
 
@@ -138,10 +155,10 @@ function App({ history }) {
           <Main />
         </Route>
         <Route path="/movies">
-          <Movies windowWidth={windowWidth} />
+          <Movies windowWidth={windowWidth} savedMovies={savedMovies} />
         </Route>
         <Route path="/saved-movies">
-          <SavedMovies />
+          <SavedMovies movies={savedMovies} />
         </Route>
         <Route path="/profile">
           <Profile

@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 import moviesApi from "../../utils/MoviesApi";
 import Preloader from "../Preloader/Preloader";
 import { movieSearchErrors } from "../../utils/utils";
+import mainApi from "../../utils/MainApi";
 
-export default function Movies({ windowWidth }) {
+export default function Movies({ windowWidth, savedMovies }) {
   const [movies, setMovies] = useState([]);
   const [moviesCount, setMoviesCount] = useState(0);
   const [addedMoviesCount, setAddedMoviesCount] = useState(0);
@@ -55,8 +56,21 @@ export default function Movies({ windowWidth }) {
       .getMovies()
       .then((data) => {
         const re = new RegExp(queryString, "i");
-        data.forEach((movie) => {
-          if (re.test(movie.nameRU) || re.test(movie.nameEN)) {
+        data.forEach((movieData) => {
+          if (re.test(movieData.nameRU) || re.test(movieData.nameEN)) {
+            const movie = {
+              country: movieData.country,
+              director: movieData.director,
+              duration: movieData.duration,
+              year: movieData.year,
+              description: movieData.description,
+              image: movieData.image.url || "",
+              trailer: movieData.trailerLink,
+              thumbnail: movieData.image.formats.thumbnail.url || "",
+              movieId: movieData.id,
+              nameRU: movieData.nameRU,
+              nameEN: movieData.nameEN,
+            };
             matchedMovies.push(movie);
           }
         });
@@ -74,6 +88,17 @@ export default function Movies({ windowWidth }) {
       .catch((e) => {
         setIsPreloaderShown(false);
         showErrorMessage(movieSearchErrors.responseError);
+        console.error(e);
+      });
+  }
+
+  function handleMovieSave(movie) {
+    mainApi
+      .postMovie(movie)
+      .then((targetMovie) => {
+        setMovies(movies.map((m) => (m._id === movie._id ? targetMovie : m)));
+      })
+      .catch((e) => {
         console.error(e);
       });
   }
@@ -100,7 +125,13 @@ export default function Movies({ windowWidth }) {
   return (
     <main className="movies">
       <MovieSearch onMovieSearch={handleMovieSearch} />
-      {!!movies.length && <MoviesCardList isSaved={false} movies={movies.slice(0, moviesCount)} />}
+      {!!movies.length && (
+        <MoviesCardList
+          isSaved={false}
+          movies={movies.slice(0, moviesCount)}
+          onMovieSave={handleMovieSave}
+        />
+      )}
       {isPreloaderShown && <Preloader />}
       <span className="movies__error-message">{errorMessage.message}</span>
       <div className="movies__more-button-container">
