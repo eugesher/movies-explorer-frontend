@@ -108,6 +108,17 @@ function App({ history }) {
     }
   }
 
+  function handleMovieDelete(movie) {
+    mainApi
+      .deleteMovie(movie._id)
+      .then(() => {
+        setSavedMovies(movie.filter((m) => m._id !== movie._id));
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }
+
   useEffect(() => {
     window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
   }, [windowWidth]);
@@ -158,7 +169,7 @@ function App({ history }) {
           <Movies windowWidth={windowWidth} savedMovies={savedMovies} />
         </Route>
         <Route path="/saved-movies">
-          <SavedMovies movies={savedMovies} />
+          <SavedMovies movies={savedMovies} onMovieDelete={handleMovieDelete} />
         </Route>
         <Route path="/profile">
           <Profile

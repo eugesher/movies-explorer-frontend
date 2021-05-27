@@ -2,15 +2,39 @@ import "./MoviesCard.css";
 import heart from "../../images/heart.svg";
 import heartSolid from "../../images/heart-solid.svg";
 import crossIcon from "../../images/cross.svg";
-import { useState } from "react";
 import { formatMovieDuration } from "../../utils/utils";
+import { useLocation } from "react-router-dom";
 
-export default function MoviesCard({ isSaved, data, onMovieSave }) {
-  const [isLiked, setIsLiked] = useState(false);
+export default function MoviesCard({ isSaved, data, onMovieSave, onMovieDelete }) {
+  const location = useLocation();
 
-  function handleLikeClick() {
-    onMovieSave(data);
-  }
+  const saveButton = () => {
+    function handleLikeClick() {
+      onMovieSave(data);
+    }
+
+    return (
+      <button onClick={handleLikeClick} type="button" className="movies-card__action-button">
+        <img
+          src={isSaved ? heartSolid : heart}
+          alt={isSaved ? "удалить фильм" : "сохранить фильм"}
+          className="movies-card__action-button-image"
+        />
+      </button>
+    );
+  };
+
+  const deleteButton = () => {
+    function handleDeleteClick() {
+      onMovieDelete(data);
+    }
+
+    return (
+      <button onClick={handleDeleteClick} type="button" className="movies-card__action-button">
+        <img src={crossIcon} alt={"удалить фильм"} className="movies-card__action-button-image" />
+      </button>
+    );
+  };
 
   function handleCardClick(event) {
     const target = event.target;
@@ -26,13 +50,7 @@ export default function MoviesCard({ isSaved, data, onMovieSave }) {
           <h2 className="movies-card__title">{data.nameRU}</h2>
           <p className="movies-card__duration">{formatMovieDuration(data.duration)}</p>
         </div>
-        <button onClick={handleLikeClick} type="button" className="movies-card__action-button">
-          <img
-            src={isSaved ? crossIcon : isLiked ? heartSolid : heart}
-            alt={isSaved ? "удалить фильм" : "сохранить фильм"}
-            className="movies-card__action-button-image"
-          />
-        </button>
+        {location.pathname === "/movies" ? saveButton() : deleteButton()}
       </div>
       <img
         src={!!data.image ? `https://api.nomoreparties.co${data.image}` : ""}
