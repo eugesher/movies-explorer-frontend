@@ -63,6 +63,27 @@
   outline: 0;
 }
 
+.profile__input-error {
+  margin-top: 6px;
+  color: #ee3465;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  height: 12px;
+}
+
+.profile__response-message {
+  margin-bottom: 16px;
+  color: #ee3465;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+}
+
+.profile__response-message_type_success {
+  color: #3ddc84;
+}
+
 .profile__submit-button {
   margin-top: 16px;
   padding: 0;
@@ -74,6 +95,10 @@
   line-height: 16px;
   font-family: inherit;
   cursor: pointer;
+}
+
+.profile__submit-button:disabled {
+  opacity: 0.2;
 }
 
 .profile__logout-link {

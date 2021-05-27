@@ -17,7 +17,7 @@ import Header from "../Header/Header";
 function App({ history }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [registerErrorMessage, setRegisterErrorMessage] = useState("");
+  const [responseMessage, setResponseMessage] = useState({ success: false, message: "" });
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
 
@@ -27,6 +27,10 @@ function App({ history }) {
 
   function closeMobileMenu() {
     setIsMobileMenuOpen(false);
+  }
+
+  function resetResponseMessage() {
+    setResponseMessage({ success: false, message: "" });
   }
 
   function handleLogin({ email, password }) {
@@ -46,15 +50,33 @@ function App({ history }) {
     register({ email, password, name })
       .then((data) => {
         if (data.statusCode === 400) {
-          setRegisterErrorMessage(data.validation.body.message);
+          setResponseMessage({ success: false, message: data.validation.body.message });
         } else if (data.message) {
-          setRegisterErrorMessage(data.message);
+          setResponseMessage({ success: false, message: data.message });
         } else if (data._id) {
-          setRegisterErrorMessage("");
+          resetResponseMessage();
         }
       })
       .then(() => {
         handleLogin({ email, password });
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }
+
+  function handleUpdateUser(values) {
+    mainApi
+      .patchUserInfo(values)
+      .then((data) => {
+        if (data.statusCode === 400) {
+          setResponseMessage({ success: false, message: data.validation.body.message });
+        } else if (data.message) {
+          setResponseMessage({ success: false, message: data.message });
+        } else {
+          setResponseMessage({ success: true, message: "Данные обновлены" });
+          setCurrentUser(data);
+        }
       })
       .catch((e) => {
         console.error(e);
@@ -114,10 +136,15 @@ function App({ history }) {
           <SavedMovies />
         </Route>
         <Route path="/profile">
-          <Profile />
+          <Profile
+            user={currentUser}
+            onMount={resetResponseMessage}
+            onUpdateUser={handleUpdateUser}
+            responseMessage={responseMessage}
+          />
         </Route>
         <Route path="/signup">
-          <Register onRegister={handleRegister} errorMessage={registerErrorMessage} />
+          <Register onRegister={handleRegister} responseMessage={responseMessage} />
         </Route>
         <Route path="/signin">
           <Login onLogin={handleLogin} />

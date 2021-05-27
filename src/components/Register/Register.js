@@ -3,7 +3,7 @@ import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import { useRef, useState } from "react";
 
-export default function Register({ onRegister, errorMessage }) {
+export default function Register({ onRegister, responseMessage }) {
   const [formValues, setFormValues] = useState({});
   const [inputErrors, setInputErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
@@ -75,7 +75,7 @@ export default function Register({ onRegister, errorMessage }) {
         </label>
       </div>
       <div className="register__container">
-        <span className="register__error">{errorMessage}</span>
+        <span className="register__error">{responseMessage.message}</span>
         <button type="submit" disabled={!isValid} className="register__submit-button">
           Зарегистрироваться
         </button>
