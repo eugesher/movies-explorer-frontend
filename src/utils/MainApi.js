@@ -4,11 +4,6 @@ class MainApi {
     this._headers = headers;
   }
 
-  _getData(response) {
-    if (response.ok) return response.json();
-    else return Promise.reject(`Ошибка: ${response.status}`);
-  }
-
   _setHeaders() {
     this._headers.authorization = `Bearer ${localStorage.getItem("jwt")}`;
   }
@@ -17,7 +12,7 @@ class MainApi {
     this._setHeaders();
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    }).then(this._getData);
+    }).then((response) => response.json());
   }
 
   patchUserInfo({ email, name }) {
@@ -26,14 +21,14 @@ class MainApi {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({ email, name }),
-    }).then(this._getData);
+    }).then((response) => response.json());
   }
 
   getMovies() {
     this._setHeaders();
     return fetch(`${this._baseUrl}/movies`, {
       headers: this._headers,
-    }).then(this._getData);
+    }).then((response) => response.json());
   }
 
   postMovie(movieData) {
@@ -42,7 +37,7 @@ class MainApi {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify(movieData),
-    }).then(this._getData);
+    }).then((response) => response.json());
   }
 
   deleteMovie(movieId) {
@@ -50,7 +45,7 @@ class MainApi {
     return fetch(`${this._baseUrl}/movies/${movieId}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._getData);
+    }).then((response) => response.json());
   }
 }
 
