@@ -131,6 +131,10 @@
   .profile__edit-form {
     margin-top: 66px;
   }
+  .profile__response-message {
+    font-size: 12px;
+    line-height: 15px;
+  }
   .profile__submit-button {
     margin: 0;
     font-size: 12px;
