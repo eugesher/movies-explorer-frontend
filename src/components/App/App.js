@@ -144,10 +144,14 @@ function App({ history }) {
           />
         </Route>
         <Route path="/signup">
-          <Register onRegister={handleRegister} responseMessage={responseMessage} />
+          <Register
+            onMount={resetResponseMessage}
+            onRegister={handleRegister}
+            responseMessage={responseMessage}
+          />
         </Route>
         <Route path="/signin">
-          <Login onLogin={handleLogin} />
+          <Login onMount={resetResponseMessage} onLogin={handleLogin} />
         </Route>
         <Route path="*">
           <ErrorPage statusCode={"404"} onGoBack={history.goBack} />

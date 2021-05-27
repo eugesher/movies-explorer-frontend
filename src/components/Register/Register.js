@@ -1,9 +1,9 @@
 import "./Register.css";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-export default function Register({ onRegister, responseMessage }) {
+export default function Register({ onMount, onRegister, responseMessage }) {
   const [formValues, setFormValues] = useState({});
   const [inputErrors, setInputErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
@@ -33,6 +33,9 @@ export default function Register({ onRegister, responseMessage }) {
     event.preventDefault();
     onRegister(formValues);
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(onMount, []);
 
   return (
     <form onSubmit={handleSubmit} className="register">

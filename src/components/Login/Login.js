@@ -1,9 +1,9 @@
 import "./Login.css";
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function Login({ onLogin }) {
+export default function Login({ onMount, onLogin }) {
   const [formValues, setFormValues] = useState({});
   const [inputErrors, setInputErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
@@ -21,6 +21,9 @@ export default function Login({ onLogin }) {
     event.preventDefault();
     onLogin(formValues);
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(onMount, []);
 
   return (
     <form onSubmit={handleSubmit} className="login">
