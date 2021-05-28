@@ -135,13 +135,13 @@ function App({ history }) {
   }
 
   // rename
-  function showErrorMessage(message) {
+  function showSearchErrorMessage(message) {
     setMovies([]);
     setErrorMessage({ isShown: true, message });
   }
 
   // rename
-  function resetErrorMessage() {
+  function resetSearchErrorMessage() {
     setErrorMessage({ isShown: false, message: "" });
   }
 
@@ -161,15 +161,23 @@ function App({ history }) {
     }
   }
 
+  function getSavedMovieId(movie) {
+    for (let i = 0; i < savedMovies.length; i++) {
+      if (savedMovies[i].movieId === movie.id) {
+        return savedMovies[i]._id;
+      }
+    }
+    return "";
+  }
+
   function handleMovieSearch(queryString) {
     if (queryString.trim() === "") {
-      showErrorMessage(movieSearchErrors.requiredField);
+      showSearchErrorMessage(movieSearchErrors.requiredField);
       return;
     }
 
-    resetErrorMessage();
+    resetSearchErrorMessage();
     setIsPreloaderShown(true);
-
     const matchedMovies = [];
     moviesApi
       .getMovies()
@@ -183,12 +191,13 @@ function App({ history }) {
               duration: movieData.duration,
               year: movieData.year,
               description: movieData.description,
-              image: movieData.image.url,
+              image: movieData.image ? movieData.image.url : "#",
               trailer: movieData.trailerLink,
-              thumbnail: movieData.image.formats.thumbnail.url,
+              thumbnail: movieData.image ? movieData.image.formats.thumbnail.url : "#",
               movieId: movieData.id,
               nameRU: movieData.nameRU,
               nameEN: movieData.nameEN,
+              savedId: getSavedMovieId(movieData),
             };
             matchedMovies.push(movie);
           }
@@ -201,25 +210,32 @@ function App({ history }) {
           setMovies(matchedMovies);
           localStorage.setItem("movies", JSON.stringify(matchedMovies));
         } else {
-          showErrorMessage(movieSearchErrors.notFound);
+          showSearchErrorMessage(movieSearchErrors.notFound);
         }
       })
       .catch((e) => {
         setIsPreloaderShown(false);
-        showErrorMessage(movieSearchErrors.responseError);
+        showSearchErrorMessage(movieSearchErrors.responseError);
         console.error(e);
       });
-  }
-
-  function isMovieSaved(movie) {
-    return savedMovies.find((m) => m.moiveId === movie.moiveId);
   }
 
   function handleMovieDelete(movie) {
     mainApi
       .deleteMovie(movie._id)
-      .then(() => {
-        setSavedMovies(movie.filter((m) => m._id !== movie._id));
+      .then(({ _id }) => {
+        if (_id) {
+          const ms = movies;
+          const index = ms.findIndex((m) => m.movieId === movie.movieId);
+          if (index !== -1) {
+            const m = { ...ms[index] };
+            m.savedId = "";
+            ms[index] = m;
+            setMovies(ms);
+            localStorage.setItem("movies", JSON.stringify(ms));
+          }
+          setSavedMovies(savedMovies.filter((m) => m.movieId !== movie.movieId));
+        }
       })
       .catch((e) => {
         console.error(e);
@@ -227,28 +243,20 @@ function App({ history }) {
   }
 
   function handleMovieSave(movie) {
-    // function changeMovieSavedStatus() {
-    //   const isLiked = movie.likes.some((l) => l === currentUser._id);
-    //   return isLiked ? mainApi.deleteMovie(movie._id) : mainApi.postMovie(movie._id);
-    // }
-
-    mainApi
-      .postMovie(movie)
-      .then((targetMovie) => {
-        // setMovies(movies.map((m) => (m._id === movie._id ? targetMovie : m)));
-      })
-      .catch((e) => {
-        console.error(e);
-      });
-
-    // changeMovieSavedStatus()
-    //   .then((targetMovie) => {
-    //     const newMovies = movies.map((m) => (m._id === movie._id ? targetMovie : m));
-    //     setMovies(newMovies);
-    //   })
-    //   .catch((e) => {
-    //     console.error(e);
-    //   });
+    const m = movie;
+    delete m.savedId;
+    mainApi.postMovie(m).then((data) => {
+      const ms = movies;
+      const index = ms.findIndex((m) => m.movieId === movie.movieId);
+      const m = { ...ms[index] };
+      m.savedId = data._id;
+      ms[index] = m;
+      localStorage.setItem("movies", JSON.stringify(ms));
+      setMovies(JSON.parse(localStorage.getItem("movies")));
+      let sm = savedMovies;
+      sm.unshift(data);
+      setSavedMovies(sm);
+    });
   }
 
   useEffect(() => {
@@ -272,11 +280,7 @@ function App({ history }) {
       mainApi
         .getMovies()
         .then((data) => {
-          if (data) {
-            setSavedMovies(data);
-          } else {
-            setSavedMovies([]);
-          }
+          setSavedMovies(data);
         })
         .catch((e) => {
           console.error(e);
@@ -306,19 +310,15 @@ function App({ history }) {
             onResultsShown={handleResultsShown}
             onMovieSearch={handleMovieSearch}
             onMovieSave={handleMovieSave}
+            onMovieDelete={handleMovieDelete}
             onMoreButtonClick={handleMoreButtonClick}
             isPreloaderShown={isPreloaderShown}
             isMoreButtonShown={isMoreButtonShown}
-            isMovieSaved={isMovieSaved}
             errorMessage={errorMessage}
           />
         </Route>
         <Route path="/saved-movies">
-          <SavedMovies
-            movies={savedMovies}
-            onMovieDelete={handleMovieDelete}
-            isMovieSaved={isMovieSaved}
-          />
+          <SavedMovies movies={savedMovies} onMovieDelete={handleMovieDelete} />
         </Route>
         <Route path="/profile">
           <Profile

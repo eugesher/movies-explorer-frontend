@@ -4,20 +4,23 @@ import heartSolid from "../../images/heart-solid.svg";
 import crossIcon from "../../images/cross.svg";
 import { formatMovieDuration } from "../../utils/utils";
 import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-export default function MoviesCard({ data, isMovieSaved, onMovieSave, onMovieDelete }) {
+export default function MoviesCard({ data, onMovieSave, onMovieDelete }) {
+  const [isSaved, setIsSaved] = useState();
   const location = useLocation();
 
-  const isSaved = isMovieSaved(data);
-  // console.log(isSaved);
-
   const saveButton = () => {
-    function handleLikeClick() {
-      onMovieSave(data);
+    function handleClick() {
+      if (isSaved) {
+        onMovieDelete({ ...data, _id: data.savedId });
+      } else {
+        onMovieSave(data);
+      }
     }
 
     return (
-      <button onClick={handleLikeClick} type="button" className="movies-card__action-button">
+      <button onClick={handleClick} type="button" className="movies-card__action-button">
         <img
           src={isSaved ? heartSolid : heart}
           alt={isSaved ? "удалить фильм" : "сохранить фильм"}
@@ -28,12 +31,12 @@ export default function MoviesCard({ data, isMovieSaved, onMovieSave, onMovieDel
   };
 
   const deleteButton = () => {
-    function handleDeleteClick() {
+    function handleClick() {
       onMovieDelete(data);
     }
 
     return (
-      <button onClick={handleDeleteClick} type="button" className="movies-card__action-button">
+      <button onClick={handleClick} type="button" className="movies-card__action-button">
         <img src={crossIcon} alt={"удалить фильм"} className="movies-card__action-button-image" />
       </button>
     );
@@ -45,6 +48,10 @@ export default function MoviesCard({ data, isMovieSaved, onMovieSave, onMovieDel
       window.open(data.trailerLink, "_blank", "noreferrer");
     }
   }
+
+  useEffect(() => {
+    setIsSaved(!!data.savedId);
+  }, [data]);
 
   return (
     <div onClick={handleCardClick} className="movies-card">

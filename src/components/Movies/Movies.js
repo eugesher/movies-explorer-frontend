@@ -6,12 +6,14 @@ import Preloader from "../Preloader/Preloader";
 
 export default function Movies({
   movies,
+  savedMovies,
   moviesCount,
   resetMovies,
   onResize,
   onResultsShown,
   onMovieSearch,
   onMovieSave,
+  onMovieDelete,
   onMoreButtonClick,
   isPreloaderShown,
   isMoreButtonShown,
@@ -32,7 +34,9 @@ export default function Movies({
         <MoviesCardList
           isMovieSaved={isMovieSaved}
           movies={movies.slice(0, moviesCount)}
+          savedMovies={savedMovies}
           onMovieSave={onMovieSave}
+          onMovieDelete={onMovieDelete}
         />
       )}
       {isPreloaderShown && <Preloader />}
