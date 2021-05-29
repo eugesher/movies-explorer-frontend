@@ -30,6 +30,7 @@ function App({ history }) {
   const [isPreloaderShown, setIsPreloaderShown] = useState(false);
   const [isMoreButtonShown, setIsMoreButtonShown] = useState(false);
   const [errorMessage, setErrorMessage] = useState({ isShown: false, message: "" });
+  const [isShortMoviesChecked, setShortMoviesChecked] = useState();
 
   function openMobileMenu() {
     setIsMobileMenuOpen(true);
@@ -135,13 +136,11 @@ function App({ history }) {
     setMoviesCount(moviesCount + addedMoviesCount);
   }
 
-  // rename
   function showSearchErrorMessage(message) {
     setMovies([]);
     setErrorMessage({ isShown: true, message });
   }
 
-  // rename
   function resetSearchErrorMessage() {
     setErrorMessage({ isShown: false, message: "" });
   }
@@ -171,12 +170,24 @@ function App({ history }) {
     return "";
   }
 
+  function handleShortMoviesSelection(isChecked) {
+    setShortMoviesChecked(isChecked);
+    if (isChecked) {
+      localStorage.setItem("movies", JSON.stringify(movies));
+      localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
+      setMovies(movies.filter((m) => m.duration <= 40));
+      setSavedMovies(savedMovies.filter((m) => m.duration <= 40));
+    } else {
+      setMovies(JSON.parse(localStorage.getItem("movies")));
+      setSavedMovies(JSON.parse(localStorage.getItem("savedMovies")));
+    }
+  }
+
   function handleMovieSearch(queryString) {
     if (queryString.trim() === "") {
       showSearchErrorMessage(movieSearchErrors.requiredField);
       return;
     }
-
     resetSearchErrorMessage();
     setIsPreloaderShown(true);
     const matchedMovies = [];
@@ -208,8 +219,8 @@ function App({ history }) {
       .then((matchedMovies) => {
         setIsPreloaderShown(false);
         if (!!matchedMovies.length) {
-          setMovies(matchedMovies);
           localStorage.setItem("movies", JSON.stringify(matchedMovies));
+          setMovies(matchedMovies);
         } else {
           showSearchErrorMessage(movieSearchErrors.notFound);
         }

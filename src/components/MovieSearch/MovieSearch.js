@@ -2,7 +2,7 @@ import "./MovieSearch.css";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import { useState } from "react";
 
-export default function MovieSearch({ onMovieSearch }) {
+export default function MovieSearch({ onMovieSearch, onShortMoviesSelection }) {
   const [isFocused, setIsFocused] = useState(false);
   const [formValue, setFormValue] = useState("");
 
@@ -37,7 +37,7 @@ export default function MovieSearch({ onMovieSearch }) {
               Поиск
             </button>
           </div>
-          <FilterCheckbox />
+          <FilterCheckbox onShortMoviesSelection={onShortMoviesSelection} />
         </form>
       </div>
     </section>

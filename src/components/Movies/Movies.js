@@ -15,6 +15,7 @@ export default function Movies({
   onMovieSave,
   onMovieDelete,
   onMoreButtonClick,
+  onShortMoviesSelection,
   isPreloaderShown,
   isMoreButtonShown,
   isMovieSaved,
@@ -29,7 +30,7 @@ export default function Movies({
 
   return (
     <main className="movies">
-      <MovieSearch onMovieSearch={onMovieSearch} />
+      <MovieSearch onMovieSearch={onMovieSearch} onShortMoviesSelection={onShortMoviesSelection} />
       {!!movies.length && (
         <MoviesCardList
           isMovieSaved={isMovieSaved}
