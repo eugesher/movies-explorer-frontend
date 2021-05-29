@@ -15,6 +15,7 @@ import mainApi from "../../utils/MainApi";
 import Header from "../Header/Header";
 import { movieSearchErrors } from "../../utils/utils";
 import moviesApi from "../../utils/MoviesApi";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App({ history }) {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -301,34 +302,42 @@ function App({ history }) {
         <Route exact path="/">
           <Main />
         </Route>
-        <Route path="/movies">
-          <Movies
-            movies={movies}
-            moviesCount={moviesCount}
-            resetMovies={resetMovies}
-            onResize={handleMoviesWindowResize}
-            onResultsShown={handleResultsShown}
-            onMovieSearch={handleMovieSearch}
-            onMovieSave={handleMovieSave}
-            onMovieDelete={handleMovieDelete}
-            onMoreButtonClick={handleMoreButtonClick}
-            isPreloaderShown={isPreloaderShown}
-            isMoreButtonShown={isMoreButtonShown}
-            errorMessage={errorMessage}
-          />
-        </Route>
-        <Route path="/saved-movies">
-          <SavedMovies movies={savedMovies} onMovieDelete={handleMovieDelete} />
-        </Route>
-        <Route path="/profile">
-          <Profile
-            user={currentUser}
-            onMount={resetResponseMessage}
-            onUpdateUser={handleUpdateUser}
-            onLogout={handleLogout}
-            responseMessage={responseMessage}
-          />
-        </Route>
+        <ProtectedRoute
+          path="/movies"
+          component={Movies}
+          loggedIn={loggedIn}
+          movies={movies}
+          moviesCount={moviesCount}
+          resetMovies={resetMovies}
+          onResize={handleMoviesWindowResize}
+          onResultsShown={handleResultsShown}
+          onMovieSearch={handleMovieSearch}
+          onMovieSave={handleMovieSave}
+          onMovieDelete={handleMovieDelete}
+          onMoreButtonClick={handleMoreButtonClick}
+          onShortMoviesSelection={handleShortMoviesSelection}
+          isPreloaderShown={isPreloaderShown}
+          isMoreButtonShown={isMoreButtonShown}
+          errorMessage={errorMessage}
+        />
+        <ProtectedRoute
+          path="/saved-movies"
+          component={SavedMovies}
+          loggedIn={loggedIn}
+          movies={savedMovies}
+          onMovieDelete={handleMovieDelete}
+          onShortMoviesSelection={handleShortMoviesSelection}
+        />
+        <ProtectedRoute
+          path="/profile"
+          component={Profile}
+          loggedIn={loggedIn}
+          user={currentUser}
+          onMount={resetResponseMessage}
+          onUpdateUser={handleUpdateUser}
+          onLogout={handleLogout}
+          responseMessage={responseMessage}
+        />
         <Route path="/signup">
           <Register
             onMount={resetResponseMessage}
