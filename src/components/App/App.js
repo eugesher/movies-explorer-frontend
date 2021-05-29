@@ -61,6 +61,8 @@ function App({ history }) {
 
   function handleLogout() {
     localStorage.removeItem("jwt");
+    localStorage.removeItem("movies");
+    localStorage.removeItem("savedMovies");
     setLoggedIn(false);
   }
 
