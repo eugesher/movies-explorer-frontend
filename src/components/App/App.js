@@ -252,7 +252,6 @@ function App({ history }) {
     );
     let moviesToSet = [];
     if (!!matchedMovies.length) {
-      localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
       moviesToSet = isShortMoviesChecked ? filterShortMovies(matchedMovies) : matchedMovies;
     }
     moviesToSet.length

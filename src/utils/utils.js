@@ -10,5 +10,5 @@ export function formatMovieDuration(duration) {
 }
 
 export function filterShortMovies(movies) {
-  return movies.filter((m) => m.duration <= 40);
+  return movies ? movies.filter((m) => m.duration <= 40) : [];
 }
