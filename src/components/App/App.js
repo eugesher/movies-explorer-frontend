@@ -151,6 +151,7 @@ function App({ history }) {
 
   function showSearchErrorMessage(message) {
     setMovies([]);
+    setSavedMovies([]);
     setErrorMessage({ isShown: true, message });
   }
 
@@ -330,6 +331,10 @@ function App({ history }) {
         });
   }, [loggedIn]);
 
+  useEffect(() => {
+    loggedIn && localStorage.setItem("movies", JSON.stringify([]));
+  }, [loggedIn]);
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(handleCheckToken, []);
 
@@ -371,6 +376,7 @@ function App({ history }) {
           onMovieSearch={handleSavedMovieSearch}
           onMovieDelete={handleMovieDelete}
           onShortMoviesSelection={handleShortMoviesSelection}
+          errorMessage={errorMessage}
         />
         <ProtectedRoute
           path="/profile"
