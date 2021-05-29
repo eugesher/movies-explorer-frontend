@@ -13,7 +13,7 @@ import MobileMenu from "../MobileMenu/MobileMenu";
 import { authorize, checkToken, register } from "../../utils/auth";
 import mainApi from "../../utils/MainApi";
 import Header from "../Header/Header";
-import { movieSearchErrors } from "../../utils/utils";
+import { filterShortMovies, movieSearchErrors } from "../../utils/utils";
 import moviesApi from "../../utils/MoviesApi";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
@@ -175,10 +175,8 @@ function App({ history }) {
   function handleShortMoviesSelection(isChecked) {
     setShortMoviesChecked(isChecked);
     if (isChecked) {
-      localStorage.setItem("movies", JSON.stringify(movies));
-      localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
-      setMovies(movies.filter((m) => m.duration <= 40));
-      setSavedMovies(savedMovies.filter((m) => m.duration <= 40));
+      setMovies(filterShortMovies(movies));
+      setSavedMovies(filterShortMovies(savedMovies));
     } else {
       setMovies(JSON.parse(localStorage.getItem("movies")));
       setSavedMovies(JSON.parse(localStorage.getItem("savedMovies")));
@@ -222,9 +220,12 @@ function App({ history }) {
         setIsPreloaderShown(false);
         if (!!matchedMovies.length) {
           localStorage.setItem("movies", JSON.stringify(matchedMovies));
-          setMovies(matchedMovies);
-        } else {
-          showSearchErrorMessage(movieSearchErrors.notFound);
+          const moviesToSet = isShortMoviesChecked
+            ? filterShortMovies(matchedMovies)
+            : matchedMovies;
+          moviesToSet.length
+            ? setMovies(moviesToSet)
+            : showSearchErrorMessage(movieSearchErrors.notFound);
         }
       })
       .catch((e) => {

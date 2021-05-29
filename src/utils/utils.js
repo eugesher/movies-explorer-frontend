@@ -8,3 +8,7 @@ export const movieSearchErrors = {
 export function formatMovieDuration(duration) {
   return `${Math.floor(duration / 60)} ч ${duration % 60} м`;
 }
+
+export function filterShortMovies(movies) {
+  return movies.filter((m) => m.duration <= 40);
+}
