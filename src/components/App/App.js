@@ -123,6 +123,7 @@ function App({ history }) {
   function resetMovies() {
     const movies = JSON.parse(localStorage.getItem("movies"));
     if (movies) {
+      resetSearchErrorMessage();
       setMovies(movies);
     } else {
       setMovies([]);
@@ -218,15 +219,14 @@ function App({ history }) {
       })
       .then((matchedMovies) => {
         setIsPreloaderShown(false);
+        let moviesToSet = [];
         if (!!matchedMovies.length) {
           localStorage.setItem("movies", JSON.stringify(matchedMovies));
-          const moviesToSet = isShortMoviesChecked
-            ? filterShortMovies(matchedMovies)
-            : matchedMovies;
-          moviesToSet.length
-            ? setMovies(moviesToSet)
-            : showSearchErrorMessage(movieSearchErrors.notFound);
+          moviesToSet = isShortMoviesChecked ? filterShortMovies(matchedMovies) : matchedMovies;
         }
+        moviesToSet.length
+          ? setMovies(moviesToSet)
+          : showSearchErrorMessage(movieSearchErrors.notFound);
       })
       .catch((e) => {
         setIsPreloaderShown(false);
