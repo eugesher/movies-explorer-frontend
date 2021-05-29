@@ -30,7 +30,7 @@ function App({ history }) {
   const [isPreloaderShown, setIsPreloaderShown] = useState(false);
   const [isMoreButtonShown, setIsMoreButtonShown] = useState(false);
   const [errorMessage, setErrorMessage] = useState({ isShown: false, message: "" });
-  const [isShortMoviesChecked, setShortMoviesChecked] = useState();
+  const [isShortMoviesChecked, setIsShortMoviesChecked] = useState(false);
 
   function openMobileMenu() {
     setIsMobileMenuOpen(true);
@@ -135,6 +135,16 @@ function App({ history }) {
     }
   }
 
+  function resetSavedMovies() {
+    const movies = JSON.parse(localStorage.getItem("savedMovies"));
+    if (movies) {
+      resetSearchErrorMessage();
+      setSavedMovies(movies);
+    } else {
+      setMovies([]);
+    }
+  }
+
   function handleMoreButtonClick() {
     setMoviesCount(moviesCount + addedMoviesCount);
   }
@@ -174,7 +184,7 @@ function App({ history }) {
   }
 
   function handleShortMoviesSelection(isChecked) {
-    setShortMoviesChecked(isChecked);
+    setIsShortMoviesChecked(isChecked);
     if (isChecked) {
       setMovies(filterShortMovies(movies));
       setSavedMovies(filterShortMovies(savedMovies));
@@ -235,6 +245,21 @@ function App({ history }) {
       });
   }
 
+  function handleSavedMovieSearch(queryString) {
+    const re = new RegExp(queryString, "i");
+    const matchedMovies = savedMovies.filter(
+      (movie) => re.test(movie.nameRU) || re.test(movie.nameEN)
+    );
+    let moviesToSet = [];
+    if (!!matchedMovies.length) {
+      localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
+      moviesToSet = isShortMoviesChecked ? filterShortMovies(matchedMovies) : matchedMovies;
+    }
+    moviesToSet.length
+      ? setSavedMovies(moviesToSet)
+      : showSearchErrorMessage(movieSearchErrors.notFound);
+  }
+
   function handleMovieDelete(movie) {
     mainApi
       .deleteMovie(movie._id)
@@ -249,7 +274,9 @@ function App({ history }) {
             setMovies(ms);
             localStorage.setItem("movies", JSON.stringify(ms));
           }
-          setSavedMovies(savedMovies.filter((m) => m.movieId !== movie.movieId));
+          const savedMoviesToSet = savedMovies.filter((m) => m.movieId !== movie.movieId);
+          localStorage.setItem("savedMovies", JSON.stringify(savedMoviesToSet));
+          setSavedMovies(savedMoviesToSet);
         }
       })
       .catch((e) => {
@@ -270,6 +297,7 @@ function App({ history }) {
       setMovies(JSON.parse(localStorage.getItem("movies")));
       let sm = savedMovies;
       sm.unshift(data);
+      localStorage.setItem("savedMovies", JSON.stringify(sm));
       setSavedMovies(sm);
     });
   }
@@ -295,6 +323,7 @@ function App({ history }) {
       mainApi
         .getMovies()
         .then((data) => {
+          localStorage.setItem("savedMovies", JSON.stringify(data));
           setSavedMovies(data);
         })
         .catch((e) => {
@@ -339,6 +368,8 @@ function App({ history }) {
           component={SavedMovies}
           loggedIn={loggedIn}
           movies={savedMovies}
+          resetMovies={resetSavedMovies}
+          onMovieSearch={handleSavedMovieSearch}
           onMovieDelete={handleMovieDelete}
           onShortMoviesSelection={handleShortMoviesSelection}
         />
