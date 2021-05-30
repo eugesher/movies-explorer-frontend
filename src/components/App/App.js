@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch, useLocation, withRouter } from "react-router-dom";
 import "./App.css";
 import Main from "../Main/Main";
 import Register from "../Register/Register";
@@ -31,6 +31,7 @@ function App({ history }) {
   const [isMoreButtonShown, setIsMoreButtonShown] = useState(false);
   const [errorMessage, setErrorMessage] = useState({ isShown: false, message: "" });
   const [isShortMoviesChecked, setIsShortMoviesChecked] = useState(false);
+  const location = useLocation();
 
   function openMobileMenu() {
     setIsMobileMenuOpen(true);
@@ -111,6 +112,11 @@ function App({ history }) {
           if (data.email) {
             setLoggedIn(true);
           }
+        })
+        .then(() => {
+          ["/movies", "/saved-movies", "/profile"].forEach(
+            (pathname) => pathname === location.pathname && history.push(pathname)
+          );
         })
         .catch((e) => {
           history.push("/");
