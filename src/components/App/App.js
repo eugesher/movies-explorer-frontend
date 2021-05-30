@@ -112,7 +112,6 @@ function App({ history }) {
             setLoggedIn(true);
           }
         })
-        .then(() => history.push("/movies"))
         .catch((e) => {
           history.push("/");
           console.error(e);
@@ -403,7 +402,7 @@ function App({ history }) {
           />
         </Route>
         <Route path="*">
-          <ErrorPage statusCode={"404"} onGoBack={() => history.push("/")} />
+          <ErrorPage statusCode={"404"} onGoBack={() => history.goBack()} />
         </Route>
       </Switch>
       <Switch>
