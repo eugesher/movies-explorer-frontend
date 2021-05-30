@@ -10,6 +10,7 @@ export default function SavedMovies({
   onMovieSearch,
   onShortMoviesSelection,
   onMovieDelete,
+  errorMessage,
 }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(resetMovies, []);
@@ -18,6 +19,7 @@ export default function SavedMovies({
     <main className="saved-movies">
       <MovieSearch onMovieSearch={onMovieSearch} onShortMoviesSelection={onShortMoviesSelection} />
       <MoviesCardList movies={movies} isMovieSaved={isMovieSaved} onMovieDelete={onMovieDelete} />
+      <span className="movies__error-message">{errorMessage.message}</span>
     </main>
   );
 }
