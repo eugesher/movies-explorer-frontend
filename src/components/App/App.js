@@ -160,7 +160,7 @@ function App({ history }) {
 
   function handleMoviesWindowResize() {
     if (windowWidth >= 480) {
-      setAddedMoviesCount(3);
+      setAddedMoviesCount(4);
     } else {
       setAddedMoviesCount(2);
     }
