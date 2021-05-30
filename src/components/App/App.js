@@ -112,7 +112,7 @@ function App({ history }) {
             setLoggedIn(true);
           }
         })
-        .then(history.push("/movies"))
+        .then(() => history.push("/movies"))
         .catch((e) => {
           history.push("/");
           console.error(e);
