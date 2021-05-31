@@ -1,16 +1,33 @@
 import "./Header.css";
 import logo from "../../images/logo.svg";
 import Navigation from "../Navigation/Navigation";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import AppNavigation from "../AppNavigation/AppNavigation";
+import { useEffect, useState } from "react";
 
-export default function Header() {
+export default function Header({ windowWidth, loggedIn, onOpenMobileMenu }) {
+  const location = useLocation();
+  const [isLanding, setIsLanding] = useState(false);
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setIsLanding(true);
+    } else {
+      setIsLanding(false);
+    }
+  }, [location.pathname]);
+
   return (
-    <header className="header">
-      <div className="header__content">
+    <header className={`header ${isLanding && "header_type_landing"}`}>
+      <div className={`header__content ${loggedIn && "header__content_state_logged-in"}`}>
         <Link to="/">
           <img src={logo} alt="логотип приложения" />
         </Link>
-        <Navigation />
+        {loggedIn ? (
+          <AppNavigation windowWidth={windowWidth} onOpenMobileMenu={onOpenMobileMenu} />
+        ) : (
+          <Navigation />
+        )}
       </div>
     </header>
   );

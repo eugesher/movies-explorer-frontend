@@ -2,32 +2,71 @@ import "./MoviesCard.css";
 import heart from "../../images/heart.svg";
 import heartSolid from "../../images/heart-solid.svg";
 import crossIcon from "../../images/cross.svg";
-import preview from "../../images/preview.png";
-import { useState } from "react";
+import { formatMovieDuration } from "../../utils/utils";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-export default function MoviesCard({ isSaved }) {
-  const [isLiked, setIsLiked] = useState(false);
+export default function MoviesCard({ data, onMovieSave, onMovieDelete }) {
+  const [isSaved, setIsSaved] = useState();
+  const location = useLocation();
 
-  function handleLikeClick() {
-    isLiked ? setIsLiked(false) : setIsLiked(true);
+  const saveButton = () => {
+    function handleClick() {
+      if (isSaved) {
+        onMovieDelete({ ...data, _id: data.savedId });
+      } else {
+        onMovieSave(data);
+      }
+    }
+
+    return (
+      <button onClick={handleClick} type="button" className="movies-card__action-button">
+        <img
+          src={isSaved ? heartSolid : heart}
+          alt={isSaved ? "удалить фильм" : "сохранить фильм"}
+          className="movies-card__action-button-image"
+        />
+      </button>
+    );
+  };
+
+  const deleteButton = () => {
+    function handleClick() {
+      onMovieDelete(data);
+    }
+
+    return (
+      <button onClick={handleClick} type="button" className="movies-card__action-button">
+        <img src={crossIcon} alt={"удалить фильм"} className="movies-card__action-button-image" />
+      </button>
+    );
+  };
+
+  function handleCardClick(event) {
+    const target = event.target;
+    if (target.classList.contains("movies-card")) {
+      window.open(data.trailerLink, "_blank", "noreferrer");
+    }
   }
 
+  useEffect(() => {
+    setIsSaved(!!data.savedId);
+  }, [data]);
+
   return (
-    <div className="movies-card">
+    <div onClick={handleCardClick} className="movies-card">
       <div className="movies-card__main-container">
         <div className="movies-card__info-container">
-          <h2 className="movies-card__title">33 слова о дизайне</h2>
-          <p className="movies-card__duration">1ч 42м</p>
+          <h2 className="movies-card__title">{data.nameRU}</h2>
+          <p className="movies-card__duration">{formatMovieDuration(data.duration)}</p>
         </div>
-        <button onClick={handleLikeClick} type="button" className="movies-card__action-button">
-          <img
-            src={isSaved ? crossIcon : isLiked ? heartSolid : heart}
-            alt={isSaved ? "удалить фильм" : "сохранить фильм"}
-            className="movies-card__action-button-image"
-          />
-        </button>
+        {location.pathname === "/movies" ? saveButton() : deleteButton()}
       </div>
-      <img src={preview} alt="превью постера фильма" className="movies-card__preview" />
+      <img
+        src={!!data.image ? `https://api.nomoreparties.co${data.image}` : ""}
+        alt="превью постера фильма"
+        className="movies-card__preview"
+      />
     </div>
   );
 }
