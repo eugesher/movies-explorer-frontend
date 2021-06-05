@@ -278,20 +278,17 @@ function App({ history }) {
   }
 
   function handleMovieSave(movie) {
-    const m = movie;
-    delete m.savedId;
-    mainApi.postMovie(m).then((data) => {
-      const ms = movies;
-      const index = ms.findIndex((m) => m.movieId === movie.movieId);
-      const m = { ...ms[index] };
-      m.savedId = data._id;
-      ms[index] = m;
-      localStorage.setItem("movies", JSON.stringify(ms));
+    delete movie.savedId;
+    mainApi.postMovie(movie).then((data) => {
+      const index = movies.findIndex((m) => m.movieId === movie.movieId);
+      const movieToSave = { ...movies[index] };
+      movieToSave.savedId = data._id;
+      movies[index] = movieToSave;
+      localStorage.setItem("movies", JSON.stringify(movies));
       setMovies(JSON.parse(localStorage.getItem("movies")));
-      let sm = savedMovies;
-      sm.unshift(data);
-      localStorage.setItem("savedMovies", JSON.stringify(sm));
-      setSavedMovies(sm);
+      savedMovies.unshift(data);
+      localStorage.setItem("savedMovies", JSON.stringify(savedMovies));
+      setSavedMovies(savedMovies);
     });
   }
 
