@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Route, Switch, useLocation, withRouter } from "react-router-dom";
 import "./App.css";
-import Main from "../Main/Main";
+import Landing from "../Landing/Landing";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Movies from "../Movies/Movies";
@@ -340,7 +340,7 @@ function App({ history }) {
       </Switch>
       <Switch>
         <Route exact path="/">
-          <Main />
+          <Landing />
         </Route>
         <ProtectedRoute
           path="/movies"

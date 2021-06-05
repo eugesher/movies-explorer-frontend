@@ -1,6 +1,6 @@
 import "./AboutMe.css";
-import myPhoto from "../../images/me.png";
-import Portfolio from "../Portfolio/Portfolio";
+import myPhoto from "../../../images/me.png";
+import Portfolio from "../../Portfolio/Portfolio";
 
 export default function AboutMe() {
   return (
