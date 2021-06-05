@@ -125,19 +125,15 @@ function App({ history }) {
     }
   }
 
+  function resetMoviesCount() {
+    setMoviesCount(windowWidth >= 480 ? 6 : 5);
+  }
+
   function resetMovies() {
     const movies = JSON.parse(localStorage.getItem("movies"));
-    if (movies) {
-      resetSearchErrorMessage();
-      setMovies(movies);
-    } else {
-      setMovies([]);
-    }
-    if (windowWidth >= 480) {
-      setMoviesCount(6);
-    } else {
-      setMoviesCount(5);
-    }
+    movies && resetSearchErrorMessage();
+    setMovies(movies ? movies : []);
+    resetMoviesCount();
   }
 
   function resetSavedMovies() {
@@ -235,6 +231,7 @@ function App({ history }) {
       })
       .then((matchedMovies) => {
         setIsPreloaderShown(false);
+        resetMoviesCount();
         let moviesToSet = [];
         if (!!matchedMovies.length) {
           localStorage.setItem("movies", JSON.stringify(matchedMovies));
