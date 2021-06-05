@@ -55,9 +55,11 @@
     font-size: 12px;
     line-height: 15px;
   }
+
   .movies__more-button-container {
     padding-top: 70px;
   }
+
   .movies__more-button {
     width: 240px;
   }

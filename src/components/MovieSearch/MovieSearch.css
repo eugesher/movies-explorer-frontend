@@ -63,10 +63,10 @@
   border-radius: 5px;
   background-color: #4285f4;
   color: inherit;
-  font-family: inherit;
   font-weight: 500;
   font-size: 14px;
   line-height: 18px;
+  font-family: inherit;
   transition: opacity 250ms ease-in-out;
 }
 
@@ -79,6 +79,7 @@
   .movie-search__content {
     padding: 0 30px;
   }
+
   .movie-search__form {
     padding-bottom: 51px;
   }
@@ -88,18 +89,22 @@
   .movie-search__content {
     padding: 0 14px;
   }
+
   .movie-search__form {
     padding-bottom: 63px;
   }
+
   .movie-search__input-group {
     margin-bottom: 30px;
     padding: 4px;
   }
+
   .movie-search__input {
     padding: 6px;
     font-size: 16px;
     line-height: 16px;
   }
+
   .movie-search__submit-button {
     width: 80px;
     height: 44px;

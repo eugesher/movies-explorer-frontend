@@ -22,6 +22,7 @@
   .movies-card-list {
     padding: 60px 0 0;
   }
+
   .movies-card-list__content {
     padding: 0 30px 30px;
   }
@@ -31,6 +32,7 @@
   .movies-card-list {
     padding: 40px 0 0;
   }
+
   .movies-card-list__content {
     padding: 0 10px;
     gap: 20px;

@@ -64,12 +64,12 @@
 }
 
 .profile__input-error {
+  height: 12px;
   margin-top: 6px;
   color: #ee3465;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  height: 12px;
 }
 
 .profile__response-message {
@@ -114,6 +114,7 @@
   .profile {
     padding: calc((100vh - 554px) / 2) 0 calc((100vh - 486px) / 2);
   }
+
   .profile__edit-form {
     margin-top: 82px;
   }
@@ -124,22 +125,27 @@
     width: 260px;
     margin-top: 109px;
   }
+
   .profile {
     justify-content: space-between;
     padding: 70px 0 40px;
   }
+
   .profile__edit-form {
     margin-top: 66px;
   }
+
   .profile__response-message {
     font-size: 12px;
     line-height: 15px;
   }
+
   .profile__submit-button {
     margin: 0;
     font-size: 12px;
     line-height: 15px;
   }
+
   .profile__logout-link {
     font-size: 12px;
     line-height: 15px;

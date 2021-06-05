@@ -59,12 +59,12 @@
 }
 
 .login__input-error {
+  height: 12px;
   margin-top: 6px;
   color: #ee3465;
   font-weight: 400;
   font-size: 10px;
   line-height: 12px;
-  height: 12px;
 }
 
 .login__error {
@@ -121,22 +121,27 @@
     min-height: 100vh;
     padding: 56px 0 30px;
   }
+
   .login__logo {
     align-self: center;
     width: 38px;
   }
+
   .login__title {
     align-self: center;
     margin: 50px 0 80px;
   }
+
   .login__error {
     font-size: 12px;
     line-height: 15px;
   }
+
   .login__submit-button {
     font-size: 12px;
     line-height: 15px;
   }
+
   .login__footer-link {
     font-size: 12px;
     line-height: 15px;

@@ -28,6 +28,7 @@
   .header__content {
     padding: 0 30px;
   }
+
   .header__content_state_logged-in {
     grid-template-columns: 1fr min-content;
   }

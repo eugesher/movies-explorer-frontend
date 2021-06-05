@@ -52,9 +52,11 @@
   .portfolio {
     margin-top: 90px;
   }
+
   .portfolio__title {
     color: #a0a0a0;
   }
+
   .portfolio__link {
     font-size: 28px;
     line-height: 50px;
@@ -65,14 +67,17 @@
   .portfolio {
     margin-top: 70px;
   }
+
   .portfolio__title {
     font-size: 14px;
     line-height: 20px;
     mix-blend-mode: normal;
   }
+
   .portfolio__link-list {
     margin: 40px 0 0;
   }
+
   .portfolio__link {
     font-size: 18px;
     line-height: 28px;
