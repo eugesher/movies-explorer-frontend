@@ -258,14 +258,13 @@ function App({ history }) {
       .deleteMovie(movie._id)
       .then(({ _id }) => {
         if (_id) {
-          const ms = movies;
-          const index = ms.findIndex((m) => m.movieId === movie.movieId);
+          const index = movies.findIndex((m) => m.movieId === movie.movieId);
           if (index !== -1) {
-            const m = { ...ms[index] };
-            m.savedId = "";
-            ms[index] = m;
-            setMovies(ms);
-            localStorage.setItem("movies", JSON.stringify(ms));
+            const movieToDelete = { ...movies[index] };
+            movieToDelete.savedId = "";
+            movies[index] = movieToDelete;
+            setMovies(movies);
+            localStorage.setItem("movies", JSON.stringify(movies));
           }
           const savedMoviesToSet = savedMovies.filter((m) => m.movieId !== movie.movieId);
           localStorage.setItem("savedMovies", JSON.stringify(savedMoviesToSet));
