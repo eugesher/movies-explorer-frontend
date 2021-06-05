@@ -11,11 +11,7 @@ export default function Profile({ user, onMount, onUpdateUser, onLogout, respons
   function validateUserName() {
     const input = nameInput.current;
     const re = /^[\wа-я\sё-]+$/;
-    if (re.test(input.value)) {
-      input.setCustomValidity("");
-    } else {
-      input.setCustomValidity("Недопустимое имя пользователя");
-    }
+    input.setCustomValidity(re.test(input.value) ? "" : "Недопустимое имя пользователя");
   }
 
   function handleInputChange(event) {

@@ -10,11 +10,7 @@ export default function Header({ windowWidth, loggedIn, onOpenMobileMenu }) {
   const [isLanding, setIsLanding] = useState(false);
 
   useEffect(() => {
-    if (location.pathname === "/") {
-      setIsLanding(true);
-    } else {
-      setIsLanding(false);
-    }
+    setIsLanding(location.pathname === "/");
   }, [location.pathname]);
 
   return (

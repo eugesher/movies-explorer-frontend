@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Route, Switch, useLocation, withRouter } from "react-router-dom";
 import "./App.css";
 import Main from "../Main/Main";
@@ -26,7 +26,7 @@ function App({ history }) {
   const [movies, setMovies] = useState([]);
   const [moviesCount, setMoviesCount] = useState(0);
   const [savedMovies, setSavedMovies] = useState([]);
-  const [addedMoviesCount, setAddedMoviesCount] = useState(0);
+  const [moreMoviesCount, setMoreMoviesCount] = useState(0);
   const [isPreloaderShown, setIsPreloaderShown] = useState(false);
   const [isMoreButtonShown, setIsMoreButtonShown] = useState(false);
   const [errorMessage, setErrorMessage] = useState({ isShown: false, message: "" });
@@ -138,16 +138,12 @@ function App({ history }) {
 
   function resetSavedMovies() {
     const movies = JSON.parse(localStorage.getItem("savedMovies"));
-    if (movies) {
-      resetSearchErrorMessage();
-      setSavedMovies(movies);
-    } else {
-      setMovies([]);
-    }
+    movies && resetSearchErrorMessage();
+    setSavedMovies(movies ? movies : []);
   }
 
   function handleMoreButtonClick() {
-    setMoviesCount(moviesCount + addedMoviesCount);
+    setMoviesCount(moviesCount + moreMoviesCount);
   }
 
   function showSearchErrorMessage(message) {
@@ -161,22 +157,16 @@ function App({ history }) {
   }
 
   function handleMoviesWindowResize() {
-    if (windowWidth >= 480) {
-      setAddedMoviesCount(4);
-    } else {
-      setAddedMoviesCount(2);
-    }
+    setMoreMoviesCount(windowWidth >= 480 ? 4 : 2);
   }
 
   function handleResultsShown() {
-    if (moviesCount >= movies.length || !moviesCount) {
-      setIsMoreButtonShown(false);
-    } else {
-      setIsMoreButtonShown(true);
-    }
+    const condition = moviesCount >= movies.length || !moviesCount;
+    setIsMoreButtonShown(!condition);
   }
 
   function getSavedMovieId(movie) {
+    // todo: use find method
     for (let i = 0; i < savedMovies.length; i++) {
       if (savedMovies[i].movieId === movie.id) {
         return savedMovies[i]._id;
@@ -209,6 +199,7 @@ function App({ history }) {
       .then((data) => {
         const re = new RegExp(queryString, "i");
         data.forEach((movieData) => {
+          // todo: use filter method
           if (re.test(movieData.nameRU) || re.test(movieData.nameEN)) {
             const movie = {
               country: movieData.country,

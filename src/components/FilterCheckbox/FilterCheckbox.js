@@ -5,7 +5,7 @@ export default function FilterCheckbox({ onShortMoviesSelection }) {
   const checkBox = useRef();
 
   function handleCheck() {
-    checkBox.current.checked ? onShortMoviesSelection(true) : onShortMoviesSelection(false);
+    onShortMoviesSelection(checkBox.current.checked);
   }
 
   return (

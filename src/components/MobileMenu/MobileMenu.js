@@ -12,9 +12,7 @@ export default function MobileMenu({ isOpen, onClose }) {
   useEffect(() => {
     if (isOpen) {
       const handleEscapeClose = (event) => {
-        if (event.key === "Escape") {
-          onClose();
-        }
+        event.key === "Escape" && onClose();
       };
       document.addEventListener("keydown", handleEscapeClose);
       return () => {

@@ -12,11 +12,7 @@ export default function MoviesCard({ data, onMovieSave, onMovieDelete }) {
 
   const saveButton = () => {
     function handleClick() {
-      if (isSaved) {
-        onMovieDelete({ ...data, _id: data.savedId });
-      } else {
-        onMovieSave(data);
-      }
+      isSaved ? onMovieDelete({ ...data, _id: data.savedId }) : onMovieSave(data);
     }
 
     return (
@@ -44,9 +40,7 @@ export default function MoviesCard({ data, onMovieSave, onMovieDelete }) {
 
   function handleCardClick(event) {
     const target = event.target;
-    if (target.classList.contains("movies-card")) {
-      window.open(data.trailerLink, "_blank", "noreferrer");
-    }
+    target.classList.contains("movies-card") && window.open(data.trailer, "_blank", "noreferrer");
   }
 
   useEffect(() => {
