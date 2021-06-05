@@ -3,12 +3,10 @@ import heart from "../../images/heart.svg";
 import heartSolid from "../../images/heart-solid.svg";
 import crossIcon from "../../images/cross.svg";
 import { formatMovieDuration } from "../../utils/utils";
-import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-export default function MoviesCard({ data, onMovieSave, onMovieDelete }) {
+export default function MoviesCard({ location, data, onMovieSave, onMovieDelete }) {
   const [isSaved, setIsSaved] = useState();
-  const location = useLocation();
 
   const saveButton = () => {
     function handleClick() {

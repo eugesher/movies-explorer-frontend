@@ -4,6 +4,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import { useEffect } from "react";
 
 export default function SavedMovies({
+  location,
   movies,
   resetMovies,
   isMovieSaved,
@@ -18,7 +19,12 @@ export default function SavedMovies({
   return (
     <main className="saved-movies">
       <MovieSearch onMovieSearch={onMovieSearch} onShortMoviesSelection={onShortMoviesSelection} />
-      <MoviesCardList movies={movies} isMovieSaved={isMovieSaved} onMovieDelete={onMovieDelete} />
+      <MoviesCardList
+        location={location}
+        movies={movies}
+        isMovieSaved={isMovieSaved}
+        onMovieDelete={onMovieDelete}
+      />
       <span className="movies__error-message">{errorMessage.message}</span>
     </main>
   );

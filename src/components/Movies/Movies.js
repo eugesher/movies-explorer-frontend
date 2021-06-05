@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Preloader from "../Preloader/Preloader";
 
 export default function Movies({
+  location,
   movies,
   savedMovies,
   moviesCount,
@@ -33,6 +34,7 @@ export default function Movies({
       <MovieSearch onMovieSearch={onMovieSearch} onShortMoviesSelection={onShortMoviesSelection} />
       {!!movies.length && (
         <MoviesCardList
+          location={location}
           isMovieSaved={isMovieSaved}
           movies={movies.slice(0, moviesCount)}
           savedMovies={savedMovies}

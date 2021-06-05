@@ -1,7 +1,13 @@
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-export default function MoviesCardList({ movies, isMovieSaved, onMovieSave, onMovieDelete }) {
+export default function MoviesCardList({
+  location,
+  movies,
+  isMovieSaved,
+  onMovieSave,
+  onMovieDelete,
+}) {
   return (
     <section className="movies-card-list">
       <ul className="movies-card-list__content">
@@ -9,6 +15,7 @@ export default function MoviesCardList({ movies, isMovieSaved, onMovieSave, onMo
           return (
             <li key={movieData.movieId} className="movies-card-list__card">
               <MoviesCard
+                location={location}
                 data={movieData}
                 isMovieSaved={isMovieSaved}
                 onMovieSave={onMovieSave}

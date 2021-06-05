@@ -1,12 +1,11 @@
 import "./Header.css";
 import logo from "../../images/logo.svg";
 import Navigation from "../Navigation/Navigation";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AppNavigation from "../AppNavigation/AppNavigation";
 import { useEffect, useState } from "react";
 
-export default function Header({ windowWidth, loggedIn, onOpenMobileMenu }) {
-  const location = useLocation();
+export default function Header({ windowWidth, location, loggedIn, onOpenMobileMenu }) {
   const [isLanding, setIsLanding] = useState(false);
 
   useEffect(() => {

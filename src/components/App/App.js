@@ -335,7 +335,12 @@ function App({ history }) {
     <div className="app">
       <Switch>
         <Route path={["/", "/movies", "/saved-movies", "/profile"]} exact>
-          <Header windowWidth={windowWidth} loggedIn={loggedIn} onOpenMobileMenu={openMobileMenu} />
+          <Header
+            windowWidth={windowWidth}
+            location={location}
+            loggedIn={loggedIn}
+            onOpenMobileMenu={openMobileMenu}
+          />
         </Route>
       </Switch>
       <Switch>
@@ -345,6 +350,7 @@ function App({ history }) {
         <ProtectedRoute
           path="/movies"
           component={Movies}
+          location={location}
           loggedIn={loggedIn}
           movies={movies}
           moviesCount={moviesCount}
@@ -363,6 +369,7 @@ function App({ history }) {
         <ProtectedRoute
           path="/saved-movies"
           component={SavedMovies}
+          location={location}
           loggedIn={loggedIn}
           movies={savedMovies}
           resetMovies={resetSavedMovies}
